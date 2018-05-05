@@ -1,3 +1,7 @@
+ffn_natation:
+    resource: "@FFNNatationBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
