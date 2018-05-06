@@ -1,0 +1,10 @@
+{# Héritage de FFN/Resources/views/layout.html.twig #}
+{% extends "@FFNNatation/Layout/layout.html.twig" %}
+{# On écrase le page_header #}
+{% block page_header %}
+    {{ parent() }}
+{% endblock %}
+{# On écrase le body #}
+{% block body %}
+    <h1>Liste des concours</h1>
+{% endblock %}

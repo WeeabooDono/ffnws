@@ -13,4 +13,25 @@ class NatationController extends Controller
         ));
     }
 
+    public function concoursAction()
+    {
+        return $this->render('@FFNNatation/Natation/concours.html.twig', array(
+            // ...
+        ));
+    }
+
+    public function servicesAction()
+    {
+        return $this->render('@FFNNatation/Natation/services.html.twig', array(
+            // ...
+        ));
+    }
+
+    public function profilesAction()
+    {
+        return $this->render('@FFNNatation/Natation/profiles.html.twig', array(
+            // ...
+        ));
+    }
+
 }

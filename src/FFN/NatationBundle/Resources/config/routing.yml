@@ -5,3 +5,15 @@ ffn_natation_homepage:
 view:
     path:     ffn_natation_view
     defaults: { _controller: FFNNatationBundle:Natation:view }
+
+concours:
+    path:     /concours
+    defaults: { _controller: FFNNatationBundle:Natation:concours }
+
+services:
+    path:     /services
+    defaults: { _controller: FFNNatationBundle:Natation:services }
+
+profiles:
+    path:     /profiles
+    defaults: { _controller: FFNNatationBundle:Natation:profiles }
