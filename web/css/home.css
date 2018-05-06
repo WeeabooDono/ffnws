@@ -1,0 +1,14 @@
+/**
+ * Faire en sorte que le container commence après le nav-bar
+ */
+body {
+    padding-top: 54px;
+    background: url("../swimming.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}

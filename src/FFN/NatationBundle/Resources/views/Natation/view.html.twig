@@ -3,14 +3,9 @@
 {# On écrase le page_header #}
 {% block page_header %}
     {{ parent() }}
-    {# On écrase le menu #}
-    {% block menu %}
-
-    {% endblock %}
 {% endblock %}
 {# On écrase le body #}
 {% block body %}
+    <h1>Page d'introduction</h1>
     {{ parent() }}
-
-<h1>Welcome to the Natation:view page</h1>
 {% endblock %}
