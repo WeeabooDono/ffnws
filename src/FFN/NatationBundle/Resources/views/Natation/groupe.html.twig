@@ -1,0 +1,99 @@
+{# Héritage de FFN/Resources/views/layout.html.twig #}
+{% extends "@FFNNatation/Layout/layout.html.twig" %}
+
+{# On écrase le stylesheets et on y ajoute la nouvelle dépendance #}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+{% endblock %}
+{# On écrase le page_header #}
+{% block page_header %}
+    {{ parent() }}
+{% endblock %}
+{# On écrase le body #}
+{% block body %}
+    <div class="row">
+        <div class="card h-100 col-lg-4 col-md-6 mb-4 mt-4 mr-auto center">
+            <h1>Groupe {{ id }}</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6 mb-4">
+                <div class="well well-sm">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 col-lg-3 mr-3">
+                            <img src="{{ asset('140x200.png') }}" alt="" class="img-rounded img-responsive"/>
+                        </div>
+                        <div class="col-sm-6 col-md-8 col-lg-8 profile">
+                            <h4>
+                                Hello Darkness</h4>
+                            <small><cite title="San Francisco, USA">San Francisco, USA <i
+                                            class="glyphicon glyphicon-map-marker">
+                                    </i></cite></small><br>
+                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 mb-4">
+                <div class="well well-sm">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 col-lg-3 mr-3">
+                            <img src="{{ asset('140x200.png') }}" alt="" class="img-rounded img-responsive"/>
+                        </div>
+                        <div class="col-sm-6 col-md-8 col-lg-8 profile">
+                            <h4>
+                                Myold Friend</h4>
+                            <small><cite title="San Francisco, USA">San Francisco, USA <i
+                                            class="glyphicon glyphicon-map-marker">
+                                    </i></cite></small><br>
+                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 mb-4">
+                <div class="well well-sm">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 col-lg-3 mr-3">
+                            <img src="{{ asset('140x200.png') }}" alt="" class="img-rounded img-responsive"/>
+                        </div>
+                        <div class="col-sm-6 col-md-8 col-lg-8 profile">
+                            <h4>
+                                Ivekomto Talk</h4>
+                            <small><cite title="San Francisco, USA">San Francisco, USA <i
+                                            class="glyphicon glyphicon-map-marker">
+                                    </i></cite></small><br>
+                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6 mb-4">
+                <div class="well well-sm">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 col-lg-3 mr-3">
+                            <img src="{{ asset('140x200.png') }}" alt="" class="img-rounded img-responsive"/>
+                        </div>
+                        <div class="col-sm-6 col-md-8 col-lg-8 profile">
+                            <h4>
+                                Withyou Again</h4>
+                            <small><cite title="San Francisco, USA">San Francisco, USA <i
+                                            class="glyphicon glyphicon-map-marker">
+                                    </i></cite></small><br>
+                            <i class="glyphicon glyphicon-gift"></i>June 02, 1988
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

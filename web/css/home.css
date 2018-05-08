@@ -12,3 +12,8 @@ body {
         padding-top: 56px;
     }
 }
+
+.center{
+    margin:auto;
+    float:none;  /* annule le float:left de bootstrap*/
+}

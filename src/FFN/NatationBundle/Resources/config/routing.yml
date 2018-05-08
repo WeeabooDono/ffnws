@@ -17,3 +17,17 @@ services:
 profiles:
     path:     /profiles
     defaults: { _controller: FFNNatationBundle:Natation:profiles }
+
+ffn_natation_info:
+    path:     /concours/{id}
+    defaults:
+        _controller: FFNNatationBundle:Natation:information
+    requirements:
+        id: \d+
+
+ffn_natation_groupe:
+    path:     /groupe/{id}
+    defaults:
+        _controller: FFNNatationBundle:Natation:groupe
+    requirements:
+        id: \d+

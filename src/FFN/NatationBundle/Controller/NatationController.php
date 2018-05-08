@@ -34,4 +34,17 @@ class NatationController extends Controller
         ));
     }
 
+    public function informationAction($id)
+    {
+        return $this->render('@FFNNatation/Natation/information.html.twig', array(
+            'id'    => $id
+        ));
+    }
+
+    public function groupeAction($id)
+    {
+        return $this->render('@FFNNatation/Natation/groupe.html.twig', array(
+            'id'    => $id
+        ));
+    }
 }

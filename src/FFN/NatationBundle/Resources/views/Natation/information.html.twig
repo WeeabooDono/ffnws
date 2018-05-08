@@ -1,0 +1,32 @@
+{# Héritage de FFN/Resources/views/layout.html.twig #}
+{% extends "@FFNNatation/Layout/layout.html.twig" %}
+{# On écrase le page_header #}
+{% block page_header %}
+    {{ parent() }}
+{% endblock %}
+{# On écrase le body #}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="card h-100 col-lg-5 col-md-6 mb-4 mt-4 mr-auto center">
+                <h1>Résultat du concours {{ id }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="list-group col-lg-5">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="{{ path('ffn_natation_groupe', {'id': 1}) }}">Groupe 1</a>
+                    <span class="badge badge-primary badge-pill">5 Nageurs</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="{{ path('ffn_natation_groupe', {'id': 2}) }}">Groupe 2</a>
+                    <span class="badge badge-primary badge-pill">6 Nageurs</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="{{ path('ffn_natation_groupe', {'id': 3}) }}">Groupe 3</a>
+                    <span class="badge badge-primary badge-pill">3 Nageurs</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
