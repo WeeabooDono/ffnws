@@ -4,13 +4,87 @@
 {# On écrase le page_header #}
 {% block page_header %}
     {{ parent() }}
+
+
 {% endblock %}
+
 {# On écrase le body #}
 {% block body %}
+<div class="container">
     <div class="row">
         <div class="card h-100 col-lg-4 col-md-6 mb-4 mt-4 mr-auto center">
             <h1>Liste des profiles des juges</h1>
         </div>
     </div>
+
+    <div class="row">
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <button type="button" class="less btn btn-default btn-circle btn-xl" >
+                <i class="glyphicon glyphicon-ok">
+                    <h1>-</h1>
+                </i>
+            </button>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="note">50</div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <button type="button" class="more btn btn-default btn-circle btn-xl">
+                <i class="glyphicon glyphicon-ok">
+                    <h1>+</h1>
+                </i>
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="progress-title">Il faut juger</h3>
+            <div class="progress orange">
+                <div class="progress-bar" style="width:50%; background:#f7810e;">
+                    <!-- <span class="progress-icon fa fa-rocket"></span> -->
+                    <div class="progress-value"><span>50</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $('.progress').on('mouseup click', function(e){
+        var pos = e.pageX - $(this).offset().left;
+        var lg = $(this).width();
+        var width = Math.round((pos / lg) * 100);
+
+        setText(width);
+        $('.note').html('<span>' + width + '</span>');
+
+
+    });
+
+    $('.less').on('click', function(e) {
+        alert($('.note').html());
+        setText($('.note').html());
+        $('.note').html(parseInt($('.note').innerHTML) - 1);
+
+    });
+
+    $('.more').on('click', function(e) {
+        setText($('.note').html());
+        $('.note').html(parseInt($('.note').innerText) + 1);
+
+    });
+
+    function setText(txt){
+        $('.progress-bar').css('width', txt + '%');
+        $('.progress-value').html('<span>' + txt + '</span>');
+    }
+</script>
+
 
 {% endblock %}
