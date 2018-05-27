@@ -1,3 +1,43 @@
+ffn_natation_utilisateurrole:
+    resource: "@FFNNatationBundle/Controller/UtilisateurRoleController.php"
+    type:     annotation
+
+ffn_natation_noter:
+    resource: "@FFNNatationBundle/Controller/NoterController.php"
+    type:     annotation
+
+ffn_natation_composer:
+    resource: "@FFNNatationBundle/Controller/ComposerController.php"
+    type:     annotation
+
+ffn_natation_utilisateur:
+    resource: "@FFNNatationBundle/Controller/UtilisateurController.php"
+    type:     annotation
+
+ffn_natation_role:
+    resource: "@FFNNatationBundle/Controller/RoleController.php"
+    type:     annotation
+
+ffn_natation_equipe:
+    resource: "@FFNNatationBundle/Controller/EquipeController.php"
+    type:     annotation
+
+ffn_natation_club:
+    resource: "@FFNNatationBundle/Controller/ClubController.php"
+    type:     annotation
+
+ffn_natation_competition:
+    resource: "@FFNNatationBundle/Controller/CompetitionController.php"
+    type:     annotation
+
+ffn_natation_lieu:
+    resource: "@FFNNatationBundle/Controller/LieuController.php"
+    type:     annotation
+
+ffn_natation_personne:
+    resource: "@FFNNatationBundle/Controller/PersonneController.php"
+    type:     annotation
+
 ffn_natation:
     resource: "@FFNNatationBundle/Resources/config/routing.yml"
     prefix:   /

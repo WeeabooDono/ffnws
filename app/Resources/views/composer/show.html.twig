@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Composer</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nomequipe</th>
+                <td>{{ composer.idEquipe.nom }}</td>
+            </tr>
+            <tr>
+                <th>Nomepersonne</th>
+                <td>{{ composer.idPersonne.nom }}</td>
+            </tr>
+            <tr>
+                <th>Isactif</th>
+                <td>{% if composer.isActif %}Yes{% else %}No{% endif %}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('composer_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('composer_edit', { 'idEquipe': composer.idEquipe.idEquipe, 'idPersonne': composer.idPersonne.idPersonne }) }}">Edit</a>
+        </li>
+        <li>Delete
+            {#
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+            #}
+        </li>
+    </ul>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Noter list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idpersonne</th>
+                <th>Idequipe</th>
+                <th>Idcompetition</th>
+                <th>Note</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for noter in noters %}
+            <tr>
+                <td>{#<a href="{{ path('noter_show', { 'idComposer': noter.idComposer }) }}">{{ noter.idComposer }}</a>#}{{ noter.idPersonne.nom }}</td>
+                <td>{{ noter.idEquipe.nom }}</td>
+                <td>{{ noter.idCompetition.nom }}</td>
+                <td>{{ noter.note }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('noter_show', { 'idEquipe': noter.idEquipe.idEquipe, 'idPersonne': noter.idPersonne.idPersonne, 'idCompetition': noter.idCompetition.idCompetition }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('noter_edit', { 'idEquipe': noter.idEquipe.idEquipe, 'idPersonne': noter.idPersonne.idPersonne, 'idCompetition': noter.idCompetition.idCompetition }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('noter_new') }}">Create a new noter</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Personnes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idpersonne</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Adresse</th>
+                <th>Datenaissance</th>
+                <th>Codepostal</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for personne in personnes %}
+            <tr>
+                <td><a href="{{ path('personne_show', { 'idPersonne': personne.idPersonne }) }}">{{ personne.idPersonne }}</a></td>
+                <td>{{ personne.nom }}</td>
+                <td>{{ personne.prenom }}</td>
+                <td>{{ personne.adresse }}</td>
+                <td>{% if personne.dateNaissance %}{{ personne.dateNaissance|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ personne.codePostal }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('personne_show', { 'idPersonne': personne.idPersonne }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('personne_edit', { 'idPersonne': personne.idPersonne }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('personne_new') }}">Create a new personne</a>
+        </li>
+    </ul>
+{% endblock %}

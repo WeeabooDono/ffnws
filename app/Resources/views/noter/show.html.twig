@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Noter</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nomequipe</th>
+                <td>{{ noter.idEquipe.nom }}</td>
+            </tr>
+            <tr>
+                <th>Nomepersonne</th>
+                <td>{{ noter.idPersonne.nom }}</td>
+            </tr>
+            <tr>
+                <th>Nomcompetition</th>
+                <td>{{ noter.idCompetition.nom }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('noter_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('noter_edit', { 'idEquipe': noter.idEquipe.idEquipe, 'idPersonne': noter.idPersonne.idPersonne, 'idCompetition': noter.idCompetition.idCompetition }) }}">Edit</a>
+        </li>
+        <li>Delete
+            {#
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+            #}
+        </li>
+    </ul>
+
+{% endblock %}

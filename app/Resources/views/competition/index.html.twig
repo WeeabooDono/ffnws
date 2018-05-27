@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Competitions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idcompetition</th>
+                <th>Nom</th>
+                <th>Lieu</th>
+                <th>Datedebut</th>
+                <th>Datefin</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for competition in competitions %}
+            <tr>
+                <td><a href="{{ path('competition_show', { 'idCompetition': competition.idCompetition }) }}">{{ competition.idCompetition }}</a></td>
+                <td>{{ competition.nom }}</td>
+                <td>{{ competition.idLieu.nom }}</td>
+                <td>{% if competition.dateDebut %}{{ competition.dateDebut|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if competition.dateFin %}{{ competition.dateFin|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('competition_show', { 'idCompetition': competition.idCompetition }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('competition_edit', { 'idCompetition': competition.idCompetition }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('competition_new') }}">Create a new competition</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Equipes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idequipe</th>
+                <th>Nom</th>
+                <th>Club</th>
+                <th>Datecreation</th>
+                <th>Isactif</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for equipe in equipes %}
+            <tr>
+                <td><a href="{{ path('equipe_show', { 'idEquipe': equipe.idEquipe }) }}">{{ equipe.idEquipe }}</a></td>
+                <td>{{ equipe.nom }}</td>
+                <td>{{ equipe.idClub.nom }}</td>
+                <td>{% if equipe.dateCreation %}{{ equipe.dateCreation|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if equipe.isActif %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('equipe_show', { 'idEquipe': equipe.idEquipe }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('equipe_edit', { 'idEquipe': equipe.idEquipe }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('equipe_new') }}">Create a new equipe</a>
+        </li>
+    </ul>
+{% endblock %}

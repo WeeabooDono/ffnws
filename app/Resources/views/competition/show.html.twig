@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Competition</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idcompetition</th>
+                <td>{{ competition.idCompetition }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ competition.nom }}</td>
+            </tr>
+            <tr>
+                <th>Lieu</th>
+                <td>{{ competition.idLieu.nom }}</td>
+            </tr>
+            <tr>
+                <th>Datedebut</th>
+                <td>{% if competition.dateDebut %}{{ competition.dateDebut|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{% if competition.dateFin %}{{ competition.dateFin|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('competition_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('competition_edit', { 'idCompetition': competition.idCompetition }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

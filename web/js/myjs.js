@@ -10,4 +10,7 @@ $(document).ready(function(){
             }
         });
     });
+    $("table").addClass("table table-striped");
+    $("thead").addClass("thead-dark");
+    $("table a").addClass("btn btn-primary");
 });

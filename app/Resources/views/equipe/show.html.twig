@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Equipe</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idequipe</th>
+                <td>{{ equipe.idEquipe }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ equipe.nom }}</td>
+            </tr>
+            <tr>
+                <th>Club</th>
+                <td>{{ equipe.idClub.nom }}</td>
+            </tr>
+            <tr>
+                <th>Datecreation</th>
+                <td>{% if equipe.dateCreation %}{{ equipe.dateCreation|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Isactif</th>
+                <td>{% if equipe.isActif %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('equipe_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('equipe_edit', { 'idEquipe': equipe.idEquipe }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>UtilisateurRole list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idpersonne</th>
+                <th>Idcompetition</th>
+                <th>Idrole</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for utilisateurrole in utilisateurroles %}
+            <tr>
+                <td>{#<a href="{{ path('utilisateurrole_show', { 'idComposer': utilisateurrole.idComposer }) }}">{{ utilisateurrole.idComposer }}</a>#}{{ utilisateurrole.idPersonne.nom }}</td>
+                <td>{{ utilisateurrole.idCompetition.nom }}</td>
+                <td>{{ utilisateurrole.idRole.nom }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('utilisateurrole_show', { 'idRole': utilisateurrole.idRole.idRole, 'idPersonne': utilisateurrole.idPersonne.idPersonne, 'idCompetition': utilisateurrole.idCompetition.idCompetition }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('utilisateurrole_edit', { 'idRole': utilisateurrole.idRole.idRole, 'idPersonne': utilisateurrole.idPersonne.idPersonne, 'idCompetition': utilisateurrole.idCompetition.idCompetition }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('utilisateurrole_new') }}">Create a new utilisateurrole</a>
+        </li>
+    </ul>
+{% endblock %}
