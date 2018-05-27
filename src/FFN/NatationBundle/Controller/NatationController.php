@@ -8,8 +8,12 @@ class NatationController extends Controller
 {
     public function viewAction()
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $competitions = $em->getRepository('FFNNatationBundle:Competition')->findAll();
+
         return $this->render('@FFNNatation/Natation/view.html.twig', array(
-            // ...
+            'concours' => $competitions
         ));
     }
 
