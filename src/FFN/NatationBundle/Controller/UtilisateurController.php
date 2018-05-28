@@ -48,7 +48,7 @@ class UtilisateurController extends Controller
             $em->persist($utilisateur);
             $em->flush();
 
-            return $this->redirectToRoute('utilisateur_show', array('idPersonne' => $utilisateur->getIdpersonne()));
+            return $this->redirectToRoute('utilisateur_show', array('idPersonne' => $utilisateur->getIdpersonne()->getIdPersonne()));
         }
 
         return $this->render('utilisateur/new.html.twig', array(
