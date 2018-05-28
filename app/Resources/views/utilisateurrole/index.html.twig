@@ -9,6 +9,7 @@
                 <th>Idpersonne</th>
                 <th>Idcompetition</th>
                 <th>Idrole</th>
+                <th>Rang</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -18,6 +19,7 @@
                 <td>{#<a href="{{ path('utilisateurrole_show', { 'idComposer': utilisateurrole.idComposer }) }}">{{ utilisateurrole.idComposer }}</a>#}{{ utilisateurrole.idPersonne.nom }}</td>
                 <td>{{ utilisateurrole.idCompetition.nom }}</td>
                 <td>{{ utilisateurrole.idRole.nom }}</td>
+                <td>{{ utilisateurrole.rang }}</td>
                 <td>
                     <ul>
                         <li>
