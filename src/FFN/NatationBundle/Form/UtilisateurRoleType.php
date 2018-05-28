@@ -25,7 +25,8 @@ class UtilisateurRoleType extends AbstractType
             ->add('idCompetition', EntityType::class, array(
                 'class' => 'FFNNatationBundle:Competition',
                 'choice_label' => 'nom'
-            ));
+            ))
+            ->add('rang');
     }/**
      * {@inheritdoc}
      */
