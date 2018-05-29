@@ -18,8 +18,8 @@
             <tr>
                 <td><a href="{{ path('club_show', { 'idClub': club.idClub }) }}">{{ club.idClub }}</a></td>
                 <td>{{ club.nom }}</td>
-                <td>{{ club.idLieu.nom }}</td>
-                <td>{{ club.idPersonne.nom }} {{ club.idPersonne.prenom }}</td>
+                <td><a href="{{ path('lieu_show', { 'idLieu': club.idLieu.idLieu }) }}">{{ club.idLieu.nom }}</a></td>
+                <td><a href="{{ path('personne_show', { 'idPersonne': club.idPersonne.idPersonne }) }}">{{ club.idPersonne.nom }} {{ club.idPersonne.prenom }}</a></td>
                 <td>
                     <ul>
                         <li>

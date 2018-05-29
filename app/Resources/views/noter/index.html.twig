@@ -16,9 +16,9 @@
         <tbody>
         {% for noter in noters %}
             <tr>
-                <td>{#<a href="{{ path('noter_show', { 'idComposer': noter.idComposer }) }}">{{ noter.idComposer }}</a>#}{{ noter.idPersonne.nom }}</td>
-                <td>{{ noter.idEquipe.nom }}</td>
-                <td>{{ noter.idCompetition.nom }}</td>
+                <td><a href="{{ path('personne_show', { 'idPersonne': noter.idPersonne.idPersonne }) }}">{{ noter.idPersonne.nom }}</a></td>
+                <td><a href="{{ path('equipe_show', { 'idEquipe': noter.idEquipe.idEquipe }) }}">{{ noter.idEquipe.nom }}</a></td>
+                <td><a href="{{ path('competition_show', { 'idCompetition': noter.idCompetition.idCompetition }) }}">{{ noter.idCompetition.nom }}</a></td>
                 <td>{{ noter.note }}</td>
                 <td>
                     <ul>

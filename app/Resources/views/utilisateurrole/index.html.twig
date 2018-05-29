@@ -16,9 +16,9 @@
         <tbody>
         {% for utilisateurrole in utilisateurroles %}
             <tr>
-                <td>{#<a href="{{ path('utilisateurrole_show', { 'idComposer': utilisateurrole.idComposer }) }}">{{ utilisateurrole.idComposer }}</a>#}{{ utilisateurrole.idPersonne.nom }}</td>
-                <td>{{ utilisateurrole.idCompetition.nom }}</td>
-                <td>{{ utilisateurrole.idRole.nom }}</td>
+                <td><a href="{{ path('personne_show', { 'idPersonne': utilisateurrole.idPersonne.idPersonne }) }}">{{ utilisateurrole.idPersonne.nom }}</a></td>
+                <td><a href="{{ path('competition_show', { 'idCompetition': utilisateurrole.idCompetition.idCompetition }) }}">{{ utilisateurrole.idCompetition.nom }}</a></td>
+                <td><a href="{{ path('role_show', { 'idRole': utilisateurrole.idRole.idRole }) }}">{{ utilisateurrole.idRole.nom }}</a></td>
                 <td>{{ utilisateurrole.rang }}</td>
                 <td>
                     <ul>

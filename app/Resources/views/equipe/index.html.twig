@@ -19,7 +19,7 @@
             <tr>
                 <td><a href="{{ path('equipe_show', { 'idEquipe': equipe.idEquipe }) }}">{{ equipe.idEquipe }}</a></td>
                 <td>{{ equipe.nom }}</td>
-                <td>{{ equipe.idClub.nom }}</td>
+                <td><a href="{{ path('club_show', { 'idClub': equipe.idClub.idClub }) }}">{{ equipe.idClub.nom }}</a></td>
                 <td>{% if equipe.dateCreation %}{{ equipe.dateCreation|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if equipe.isActif %}Yes{% else %}No{% endif %}</td>
                 <td>

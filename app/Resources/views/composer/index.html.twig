@@ -15,8 +15,8 @@
         <tbody>
         {% for composer in composers %}
             <tr>
-                <td>{#<a href="{{ path('composer_show', { 'idComposer': composer.idComposer }) }}">{{ composer.idComposer }}</a>#}{{ composer.idPersonne.nom }}</td>
-                <td>{{ composer.idEquipe.nom }}</td>
+                <td><a href="{{ path('personne_show', { 'idPersonne': composer.idPersonne.idPersonne }) }}">{{ composer.idPersonne.nom }}</a></td>
+                <td><a href="{{ path('equipe_show', { 'idEquipe': composer.idEquipe.idEquipe }) }}">{{ composer.idEquipe.nom }}</a></td>
                 <td>{{ composer.isActif }}</td>
                 <td>
                     <ul>
