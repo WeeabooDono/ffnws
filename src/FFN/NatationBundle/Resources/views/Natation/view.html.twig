@@ -7,29 +7,30 @@
 {# On écrase le body #}
 {% block body %}
     <div class="container">
-    <div class="row">
-        <div class="card h-100 col-lg-4 col-md-6 mb-4 mt-4 mr-auto center">
-            <h1>Page d'introduction</h1>
+        <div class="row">
+            <div class="card h-100 col-lg-4 col-md-6 mb-4 mt-4 mr-auto center">
+                <h1>Page d'introduction</h1>
+            </div>
         </div>
-    </div>
         <div class="row">
             {% for concour in concours %}
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <a href="#"><img class="card-img-top" src="{{ asset('700x400.png') }}" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="{{ path('ffn_natation_info', {'id': concour.idCompetition}) }}">{{ concour.nom }}</a>
-                        </h4>
-                        <h5>Du {% if concour.dateDebut %}{{ concour.dateDebut|date('Y/m/d') }}{% endif %} au {% if concour.dateFin %}{{ concour.dateFin|date('Y/m/d') }}{% endif %}</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
-                            numquam aspernatur!</p>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" src="{{ asset('700x400.png') }}" alt=""></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="{{ path('ffn_natation_info', {'id': concour.idCompetition}) }}">{{ concour.nom }}</a>
+                            </h4>
+                            <h5>Du {% if concour.dateDebut %}{{ concour.dateDebut|date('Y/m/d') }}{% endif %}
+                                au {% if concour.dateFin %}{{ concour.dateFin|date('Y/m/d') }}{% endif %}</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
+                                numquam aspernatur!</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                        </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </div>
