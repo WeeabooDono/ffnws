@@ -13,7 +13,10 @@ class LieuType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('adresse')->add('codePostal')->add('ville');
+        $builder->add('nom')
+            ->add('adresse')
+            ->add('codePostal')
+            ->add('ville');
     }/**
      * {@inheritdoc}
      */
