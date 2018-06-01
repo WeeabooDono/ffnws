@@ -2,19 +2,18 @@
 
 namespace FFN\NatationBundle\Controller;
 
-use FFN\NatationBundle\Entity\Equipe;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class NatationController extends Controller
 {
-    public function viewAction()
+    public function accueilAction()
     {
         $em = $this->getDoctrine()->getManager();
 
         $competitions = $em->getRepository('FFNNatationBundle:Competition')->findAll();
 
-        return $this->render('@FFNNatation/Natation/view.html.twig', array(
-            'concours' => $competitions
+        return $this->render('@FFNNatation/Natation/accueil.html.twig', array(
+            'competitions' => $competitions
         ));
     }
 
