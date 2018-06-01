@@ -6,9 +6,9 @@ view:
     path:     ffn_natation_view
     defaults: { _controller: FFNNatationBundle:Natation:view }
 
-concours:
-    path:     /concours
-    defaults: { _controller: FFNNatationBundle:Natation:concours }
+competitions:
+    path:     /competitions
+    defaults: { _controller: FFNNatationBundle:Natation:competitions }
 
 services:
     path:     /services
@@ -19,15 +19,22 @@ profiles:
     defaults: { _controller: FFNNatationBundle:Natation:profiles }
 
 ffn_natation_info:
-    path:     /concours/{id}
+    path:     /competitions/{id}
     defaults:
         _controller: FFNNatationBundle:Natation:information
     requirements:
         id: \d+
 
-ffn_natation_groupe:
-    path:     /groupe/{id}
+ffn_natation_equipe:
+    path:     /equipe/{id}
     defaults:
-        _controller: FFNNatationBundle:Natation:groupe
+        _controller: FFNNatationBundle:Natation:equipe
+    requirements:
+        id: \d+
+
+ffn_natation_information_nageur:
+    path:     /personne/{id}
+    defaults:
+        _controller: FFNNatationBundle:Natation:information_nageur
     requirements:
         id: \d+
