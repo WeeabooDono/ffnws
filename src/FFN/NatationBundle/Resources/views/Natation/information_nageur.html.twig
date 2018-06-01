@@ -1,0 +1,17 @@
+{# Héritage de FFN/Resources/views/layout.html.twig #}
+{% extends "@FFNNatation/Layout/layout.html.twig" %}
+{# On écrase le page_header #}
+{% block page_header %}
+    {{ parent() }}
+{% endblock %}
+{# On écrase le body #}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="card h-100 col-lg-5 col-md-6 mb-4 mt-4 mr-auto center">
+                <h1>Profile de {{ personne.nom }} {{ personne.prenom }}</h1>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
