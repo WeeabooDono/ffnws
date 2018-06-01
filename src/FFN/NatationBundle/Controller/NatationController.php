@@ -72,9 +72,16 @@ class NatationController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $equipe = $em->getRepository('FFNNatationBundle:Equipe')->findOneByIdEquipe($id);
+        $personnes = $em->getRepository('FFNNatationBundle:Composer')->findByIdEquipe($id);
+        $curr_equipe = array();
+        foreach ($personnes as $personne){
+            if ($personne->getIsActif())
+                $curr_equipe[] = $personne->getIdPersonne();
+        }
 
         return $this->render('@FFNNatation/Natation/equipe.html.twig', array(
-            'equipe'    => $equipe
+            'equipe'    => $equipe,
+            'curr_equipe'=> $curr_equipe
         ));
     }
 
@@ -83,9 +90,10 @@ class NatationController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $personne = $em->getRepository('FFNNatationBundle:Personne')->findOneByIdPersonne($id);
-
+        $noter = $em->getRepository('FFNNatationBundle:Noter')->findAll();
         return $this->render('@FFNNatation/Natation/information_nageur.html.twig', array(
-            'personne'    => $personne
+            'personne'    => $personne,
+            'noter'       => $noter
         ));
     }
 }
