@@ -18,14 +18,14 @@ class NatationController extends Controller
         ));
     }
 
-    public function concoursAction()
+    public function competitionsAction()
     {
         $em = $this->getDoctrine()->getManager();
 
         $competitions = $em->getRepository('FFNNatationBundle:Competition')->findAll();
 
-        return $this->render('@FFNNatation/Natation/concours.html.twig', array(
-            'concours' => $competitions
+        return $this->render('@FFNNatation/Natation/competitions.html.twig', array(
+            'competitions' => $competitions
         ));
     }
 
@@ -68,14 +68,25 @@ class NatationController extends Controller
         ));
     }
 
-    public function groupeAction($id)
+    public function equipeAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
         $equipe = $em->getRepository('FFNNatationBundle:Equipe')->findOneByIdEquipe($id);
 
-        return $this->render('@FFNNatation/Natation/groupe.html.twig', array(
+        return $this->render('@FFNNatation/Natation/equipe.html.twig', array(
             'equipe'    => $equipe
+        ));
+    }
+
+    public function information_nageurAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $personne = $em->getRepository('FFNNatationBundle:Personne')->findOneByIdPersonne($id);
+
+        return $this->render('@FFNNatation/Natation/information_nageur.html.twig', array(
+            'personne'    => $personne
         ));
     }
 }
