@@ -12,6 +12,29 @@
                 <h1>Profile de {{ personne.nom }} {{ personne.prenom }}</h1>
             </div>
         </div>
+        <div class="row">
+            <div class="card h-100 center">
+                {% for equipe in personne.idEquipe %}
+
+                    {% for note in noter %}
+                        {% if note.idEquipe.idEquipe == equipe.idEquipe %}
+                            {% if loop.first %}
+                                {{ equipe.nom }} à la {{ note.idCompetition.nom }}
+                                <ul>
+                            {% elseif noter[loop.index - 1].idCompetition.idCompetition != noter[loop.index - 2].idCompetition.idCompetition %}
+                                    </ul>
+                                    {{ equipe.nom }} à la  {{ note.idCompetition.nom }}
+                                    <ul>
+                            {% endif %}
+                                <li>{{ note.note }} pts accordés par {{ note.idPersonne.nom }} {{ note.idPersonne.prenom }}</li>
+                            {% if loop.last %}<ul>{% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+
+
     </div>
 
 {% endblock %}
