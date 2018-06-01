@@ -1,6 +1,6 @@
 <?php
 
-namespace FFN\NatationBundle\Controller;
+namespace FFN\NatationBundle\Controller\administration;
 
 use FFN\NatationBundle\Entity\Equipe;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Equipe controller.
  *
- * @Route("equipe")
+ * @Route("admin/equipe")
  */
 class EquipeController extends Controller
 {

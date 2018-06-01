@@ -1,6 +1,6 @@
 <?php
 
-namespace FFN\NatationBundle\Controller;
+namespace FFN\NatationBundle\Controller\administration;
 
 use FFN\NatationBundle\Entity\Club;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Club controller.
  *
- * @Route("club")
+ * @Route("admin/club")
  */
 class ClubController extends Controller
 {

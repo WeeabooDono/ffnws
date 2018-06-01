@@ -1,6 +1,6 @@
 <?php
 
-namespace FFN\NatationBundle\Controller;
+namespace FFN\NatationBundle\Controller\administration;
 
 use FFN\NatationBundle\Entity\Lieu;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Lieu controller.
  *
- * @Route("lieu")
+ * @Route("admin/lieu")
  */
 class LieuController extends Controller
 {
