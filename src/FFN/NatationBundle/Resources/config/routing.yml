@@ -1,12 +1,8 @@
 ffn_natation_homepage:
     path:     /
-    defaults: { _controller: FFNNatationBundle:Natation:view }
+    defaults: { _controller: FFNNatationBundle:Natation:accueil }
 
-view:
-    path:     ffn_natation_view
-    defaults: { _controller: FFNNatationBundle:Natation:view }
-
-competitions:
+ffn_natation_competitions:
     path:     /competitions
     defaults: { _controller: FFNNatationBundle:Natation:competitions }
 
