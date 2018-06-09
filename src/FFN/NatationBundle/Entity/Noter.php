@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Noter
  *
- * @ORM\Table(name="noter", indexes={@ORM\Index(name="IDX_761C961A27E0FF8", columns={"id_equipe"}), @ORM\Index(name="IDX_761C961AAD18E146", columns={"id_competition"}), @ORM\Index(name="IDX_761C961A5F15257A", columns={"id_personne"})})
+ * @ORM\Table(name="noter", indexes={@ORM\Index(name="IDX_761C961A2AE5FF3", columns={"id_equipe"}), @ORM\Index(name="IDX_761C961AAD18E146", columns={"id_competition"}), @ORM\Index(name="IDX_761C961A5F15257A", columns={"id_personne"})})
  * @ORM\Entity
  */
 class Noter

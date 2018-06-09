@@ -3,29 +3,16 @@
 namespace FFN\NatationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * Utilisateur
  *
- * @ORM\Table(name="utilisateur", uniqueConstraints={@ORM\UniqueConstraint(name="utilisateur_login_key", columns={"login"})})
+ * @ORM\Table(name="utilisateur")
  * @ORM\Entity
  */
-class Utilisateur
+class Utilisateur extends BaseUser
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="login", type="string", length=25, nullable=false)
-     */
-    private $login;
-
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(name="pwd", type="string", length=80, nullable=true)
-     */
-    private $pwd;
-
     /**
      * @var \Personne
      *
@@ -39,53 +26,9 @@ class Utilisateur
     private $idPersonne;
 
 
-
-    /**
-     * Set login.
-     *
-     * @param string $login
-     *
-     * @return Utilisateur
-     */
-    public function setLogin($login)
+    public function __construct()
     {
-        $this->login = $login;
-
-        return $this;
-    }
-
-    /**
-     * Get login.
-     *
-     * @return string
-     */
-    public function getLogin()
-    {
-        return $this->login;
-    }
-
-    /**
-     * Set pwd.
-     *
-     * @param string|null $pwd
-     *
-     * @return Utilisateur
-     */
-    public function setPwd($pwd = null)
-    {
-        $this->pwd = $pwd;
-
-        return $this;
-    }
-
-    /**
-     * Get pwd.
-     *
-     * @return string|null
-     */
-    public function getPwd()
-    {
-        return $this->pwd;
+        parent::__construct();
     }
 
     /**

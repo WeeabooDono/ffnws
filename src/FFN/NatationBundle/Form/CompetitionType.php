@@ -16,8 +16,6 @@ class CompetitionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        //$lieu = $builder->getData()->getIdLieu()->getIdLieu();
-        // 'choice_value' => 'idLieu'
         $builder->add('nom')
             ->add('dateDebut', BirthdayType::class, array( // DateTimeType affichait heure/minute par défaut
                 'years' => range(date("Y") - 60, date("Y"))

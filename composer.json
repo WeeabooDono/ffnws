@@ -35,7 +35,9 @@
         "symfony/swiftmailer-bundle": "^2.6.4",
         "symfony/symfony": "3.4.*",
         "twbs/bootstrap": "^3.3",
-        "twig/twig": "^1.0||^2.0"
+        "twig/twig": "^1.0||^2.0",
+        "friendsofsymfony/user-bundle": "~2.0",
+        "symfony/templating": "^3.4"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
