@@ -21,7 +21,7 @@
                         <a href="#"><img class="card-img-top" src="{{ asset('700x400.png') }}" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="{{ path('ffn_natation_info', {'id': competition.idCompetition}) }}">{{ competition.nom }}</a>
+                                <a href="{{ path('ffn_natation_info', {'id': competition.id}) }}">{{ competition.nom }}</a>
                             </h4>
                             <h5>Du {% if competition.dateDebut %}{{ competition.dateDebut|date('Y/m/d') }}{% endif %}
                                 au {% if competition.dateFin %}{{ competition.dateFin|date('Y/m/d') }}{% endif %}</h5>

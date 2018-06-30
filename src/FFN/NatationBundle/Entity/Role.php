@@ -20,7 +20,7 @@ class Role
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="role_id_role_seq", allocationSize=1, initialValue=1)
      */
-    private $idRole;
+    private $id;
 
     /**
      * @var string|null
@@ -36,9 +36,9 @@ class Role
      *
      * @return int
      */
-    public function getIdRole()
+    public function getId()
     {
-        return $this->idRole;
+        return $this->id;
     }
 
     /**

@@ -29,7 +29,7 @@ class Noter
      *   @ORM\JoinColumn(name="id_equipe", referencedColumnName="id_equipe")
      * })
      */
-    private $idEquipe;
+    private $equipe;
 
     /**
      * @var \Competition
@@ -41,7 +41,7 @@ class Noter
      *   @ORM\JoinColumn(name="id_competition", referencedColumnName="id_competition")
      * })
      */
-    private $idCompetition;
+    private $competition;
 
     /**
      * @var \Personne
@@ -53,7 +53,7 @@ class Noter
      *   @ORM\JoinColumn(name="id_personne", referencedColumnName="id_personne")
      * })
      */
-    private $idPersonne;
+    private $personne;
 
 
 
@@ -84,13 +84,13 @@ class Noter
     /**
      * Set idEquipe.
      *
-     * @param \FFN\NatationBundle\Entity\Equipe $idEquipe
+     * @param \FFN\NatationBundle\Entity\Equipe $equipe
      *
      * @return Noter
      */
-    public function setIdEquipe(\FFN\NatationBundle\Entity\Equipe $idEquipe)
+    public function setEquipe(\FFN\NatationBundle\Entity\Equipe $equipe)
     {
-        $this->idEquipe = $idEquipe;
+        $this->equipe = $equipe;
 
         return $this;
     }
@@ -100,21 +100,21 @@ class Noter
      *
      * @return \FFN\NatationBundle\Entity\Equipe
      */
-    public function getIdEquipe()
+    public function getEquipe()
     {
-        return $this->idEquipe;
+        return $this->equipe;
     }
 
     /**
      * Set idCompetition.
      *
-     * @param \FFN\NatationBundle\Entity\Competition $idCompetition
+     * @param \FFN\NatationBundle\Entity\Competition $competition
      *
      * @return Noter
      */
-    public function setIdCompetition(\FFN\NatationBundle\Entity\Competition $idCompetition)
+    public function setCompetition(\FFN\NatationBundle\Entity\Competition $competition)
     {
-        $this->idCompetition = $idCompetition;
+        $this->competition = $competition;
 
         return $this;
     }
@@ -124,21 +124,21 @@ class Noter
      *
      * @return \FFN\NatationBundle\Entity\Competition
      */
-    public function getIdCompetition()
+    public function getCompetition()
     {
-        return $this->idCompetition;
+        return $this->competition;
     }
 
     /**
      * Set idPersonne.
      *
-     * @param \FFN\NatationBundle\Entity\Personne $idPersonne
+     * @param \FFN\NatationBundle\Entity\Personne $idpersonnepersonne
      *
      * @return Noter
      */
-    public function setIdPersonne(\FFN\NatationBundle\Entity\Personne $idPersonne)
+    public function setPersonne(\FFN\NatationBundle\Entity\Personne $personne)
     {
-        $this->idPersonne = $idPersonne;
+        $this->personne = $personne;
 
         return $this;
     }
@@ -148,9 +148,9 @@ class Noter
      *
      * @return \FFN\NatationBundle\Entity\Personne
      */
-    public function getIdPersonne()
+    public function getPersonne()
     {
-        return $this->idPersonne;
+        return $this->personne;
     }
 
     /**

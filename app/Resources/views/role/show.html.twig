@@ -7,7 +7,7 @@
         <tbody>
             <tr>
                 <th>Idrole</th>
-                <td>{{ role.idRole }}</td>
+                <td>{{ role.id }}</td>
             </tr>
             <tr>
                 <th>Nom</th>
@@ -21,7 +21,7 @@
             <a href="{{ path('role_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('role_edit', { 'idRole': role.idRole }) }}">Edit</a>
+            <a href="{{ path('role_edit', { 'role_id': role.id }) }}">edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

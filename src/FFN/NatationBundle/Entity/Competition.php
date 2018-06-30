@@ -20,7 +20,7 @@ class Competition
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="competition_id_competition_seq", allocationSize=1, initialValue=1)
      */
-    private $idCompetition;
+    private $id;
 
     /**
      * @var string|null
@@ -51,7 +51,7 @@ class Competition
      *   @ORM\JoinColumn(name="id_lieu", referencedColumnName="id_lieu")
      * })
      */
-    private $idLieu;
+    private $lieu;
 
 
 
@@ -60,9 +60,9 @@ class Competition
      *
      * @return int
      */
-    public function getIdCompetition()
+    public function getId()
     {
-        return $this->idCompetition;
+        return $this->id;
     }
 
     /**
@@ -140,13 +140,13 @@ class Competition
     /**
      * Set idLieu.
      *
-     * @param \FFN\NatationBundle\Entity\Lieu|null $idLieu
+     * @param \FFN\NatationBundle\Entity\Lieu|null $lieu
      *
      * @return Competition
      */
-    public function setIdLieu(\FFN\NatationBundle\Entity\Lieu $idLieu = null)
+    public function setLieu(\FFN\NatationBundle\Entity\Lieu $lieu = null)
     {
-        $this->idLieu = $idLieu;
+        $this->lieu = $lieu;
 
         return $this;
     }
@@ -156,8 +156,8 @@ class Competition
      *
      * @return \FFN\NatationBundle\Entity\Lieu|null
      */
-    public function getIdLieu()
+    public function getLieu()
     {
-        return $this->idLieu;
+        return $this->lieu;
     }
 }

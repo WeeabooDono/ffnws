@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="card h-100 col-lg-4 col-md-6 mb-4 mt-4 mr-auto center">
+                <h1>Page d'administration</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            {# Menu #}
+            <div class="col-lg-3">
+                <h1 class="my-4">Administration</h1>
+                <div class="list-group">
+                    <a href="{{ path('club_index') }}" class="list-group-item">Club</a>
+                    <a href="{{ path('competition_index') }}" class="list-group-item">Competition</a>
+                    <a href="{{ path('composer_index') }}" class="list-group-item">Composer</a>
+                    <a href="{{ path('equipe_index') }}" class="list-group-item">Equipe</a>
+                    <a href="{{ path('lieu_index') }}" class="list-group-item">Lieu</a>
+                    <a href="{{ path('noter_index') }}" class="list-group-item">Noter</a>
+                    <a href="{{ path('personne_index') }}" class="list-group-item">Personne</a>
+                    <a href="{{ path('role_index') }}" class="list-group-item">Role</a>
+                    <a href="{{ path('utilisateur_index') }}" class="list-group-item">Utilisateur</a>
+                    <a href="{{ path('utilisateurrole_index') }}" class="list-group-item">Utilisateur Role</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('ffn_natation_homepage') }}">Retour à l'accueil</a>
+        </li>
+    </ul>
+{% endblock %}

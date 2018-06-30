@@ -48,7 +48,7 @@ class EquipeController extends Controller
             $em->persist($equipe);
             $em->flush();
 
-            return $this->redirectToRoute('equipe_show', array('idEquipe' => $equipe->getIdequipe()));
+            return $this->redirectToRoute('equipe_show', array('equipe_id' => $equipe->getId()));
         }
 
         return $this->render('equipe/new.html.twig', array(
@@ -60,15 +60,15 @@ class EquipeController extends Controller
     /**
      * Finds and displays a equipe entity.
      *
-     * @Route("/{idEquipe}", name="equipe_show")
+     * @Route("/{equipe_id}", name="equipe_show")
      * @Method("GET")
      */
-    public function showAction(Equipe $equipe)
+    public function showAction(Equipe $equipe_id)
     {
-        $deleteForm = $this->createDeleteForm($equipe);
+        $deleteForm = $this->createDeleteForm($equipe_id);
 
         return $this->render('equipe/show.html.twig', array(
-            'equipe' => $equipe,
+            'equipe' => $equipe_id,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -76,23 +76,23 @@ class EquipeController extends Controller
     /**
      * Displays a form to edit an existing equipe entity.
      *
-     * @Route("/{idEquipe}/edit", name="equipe_edit")
+     * @Route("/{equipe_id}/edit", name="equipe_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Equipe $equipe)
+    public function editAction(Request $request, Equipe $equipe_id)
     {
-        $deleteForm = $this->createDeleteForm($equipe);
-        $editForm = $this->createForm('FFN\NatationBundle\Form\EquipeType', $equipe);
+        $deleteForm = $this->createDeleteForm($equipe_id);
+        $editForm = $this->createForm('FFN\NatationBundle\Form\EquipeType', $equipe_id);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('equipe_edit', array('idEquipe' => $equipe->getIdequipe()));
+            return $this->redirectToRoute('equipe_edit', array('equipe_id' => $equipe_id->getId()));
         }
 
         return $this->render('equipe/edit.html.twig', array(
-            'equipe' => $equipe,
+            'equipe' => $equipe_id,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -101,17 +101,17 @@ class EquipeController extends Controller
     /**
      * Deletes a equipe entity.
      *
-     * @Route("/{idEquipe}", name="equipe_delete")
+     * @Route("/{equipe_id}", name="equipe_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Equipe $equipe)
+    public function deleteAction(Request $request, Equipe $equipe_id)
     {
-        $form = $this->createDeleteForm($equipe);
+        $form = $this->createDeleteForm($equipe_id);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($equipe);
+            $em->remove($equipe_id);
             $em->flush();
         }
 
@@ -128,7 +128,7 @@ class EquipeController extends Controller
     private function createDeleteForm(Equipe $equipe)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('equipe_delete', array('idEquipe' => $equipe->getIdequipe())))
+            ->setAction($this->generateUrl('equipe_delete', array('equipe_id' => $equipe->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

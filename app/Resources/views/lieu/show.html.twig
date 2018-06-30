@@ -7,7 +7,7 @@
         <tbody>
             <tr>
                 <th>Idlieu</th>
-                <td>{{ lieu.idLieu }}</td>
+                <td>{{ lieu.id }}</td>
             </tr>
             <tr>
                 <th>Nom</th>
@@ -33,7 +33,7 @@
             <a href="{{ path('lieu_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('lieu_edit', { 'idLieu': lieu.idLieu }) }}">Edit</a>
+            <a href="{{ path('lieu_edit', { 'lieu_id': lieu.id }) }}">edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

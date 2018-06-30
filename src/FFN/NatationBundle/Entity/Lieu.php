@@ -20,7 +20,7 @@ class Lieu
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="lieu_id_lieu_seq", allocationSize=1, initialValue=1)
      */
-    private $idLieu;
+    private $id;
 
     /**
      * @var string|null
@@ -57,9 +57,9 @@ class Lieu
      *
      * @return int
      */
-    public function getIdLieu()
+    public function getId()
     {
-        return $this->idLieu;
+        return $this->id;
     }
 
     /**

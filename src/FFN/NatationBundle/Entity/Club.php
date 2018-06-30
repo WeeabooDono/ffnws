@@ -20,7 +20,7 @@ class Club
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="club_id_club_seq", allocationSize=1, initialValue=1)
      */
-    private $idClub;
+    private $id;
 
     /**
      * @var string|null
@@ -37,7 +37,7 @@ class Club
      *   @ORM\JoinColumn(name="id_lieu", referencedColumnName="id_lieu")
      * })
      */
-    private $idLieu;
+    private $lieu;
 
     /**
      * @var \Personne
@@ -47,7 +47,7 @@ class Club
      *   @ORM\JoinColumn(name="id_personne", referencedColumnName="id_personne")
      * })
      */
-    private $idPersonne;
+    private $personne;
 
 
 
@@ -56,9 +56,9 @@ class Club
      *
      * @return int
      */
-    public function getIdClub()
+    public function getId()
     {
-        return $this->idClub;
+        return $this->id;
     }
 
     /**
@@ -88,13 +88,13 @@ class Club
     /**
      * Set idLieu.
      *
-     * @param \FFN\NatationBundle\Entity\Lieu|null $idLieu
+     * @param \FFN\NatationBundle\Entity\Lieu|null $lieu
      *
      * @return Club
      */
-    public function setIdLieu(\FFN\NatationBundle\Entity\Lieu $idLieu = null)
+    public function setLieu(\FFN\NatationBundle\Entity\Lieu $lieu = null)
     {
-        $this->idLieu = $idLieu;
+        $this->lieu = $lieu;
 
         return $this;
     }
@@ -104,21 +104,21 @@ class Club
      *
      * @return \FFN\NatationBundle\Entity\Lieu|null
      */
-    public function getIdLieu()
+    public function getLieu()
     {
-        return $this->idLieu;
+        return $this->lieu;
     }
 
     /**
      * Set idPersonne.
      *
-     * @param \FFN\NatationBundle\Entity\Personne|null $idPersonne
+     * @param \FFN\NatationBundle\Entity\Personne|null $personne
      *
      * @return Club
      */
-    public function setIdPersonne(\FFN\NatationBundle\Entity\Personne $idPersonne = null)
+    public function setPersonne(\FFN\NatationBundle\Entity\Personne $personne = null)
     {
-        $this->idPersonne = $idPersonne;
+        $this->personne = $personne;
 
         return $this;
     }
@@ -128,8 +128,8 @@ class Club
      *
      * @return \FFN\NatationBundle\Entity\Personne|null
      */
-    public function getIdPersonne()
+    public function getPersonne()
     {
-        return $this->idPersonne;
+        return $this->personne;
     }
 }

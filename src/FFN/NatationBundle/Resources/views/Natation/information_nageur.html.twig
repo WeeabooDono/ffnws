@@ -14,19 +14,19 @@
         </div>
         <div class="row">
             <div class="card h-100 center">
-                {% for equipe in personne.idEquipe %}
+                {% for equipe in personne.equipe %}
 
                     {% for note in noter %}
-                        {% if note.idEquipe.idEquipe == equipe.idEquipe %}
+                        {% if note.equipe.id == equipe.id %}
                             {% if loop.first %}
-                                {{ equipe.nom }} à la {{ note.idCompetition.nom }}
+                                {{ equipe.nom }} à la {{ note.competition.nom }}
                                 <ul>
-                            {% elseif noter[loop.index - 1].idCompetition.idCompetition != noter[loop.index - 2].idCompetition.idCompetition %}
+                            {% elseif noter[loop.index - 1].competition.id != noter[loop.index - 2].competition.id %}
                                     </ul>
-                                    {{ equipe.nom }} à la  {{ note.idCompetition.nom }}
+                                    {{ equipe.nom }} à la  {{ note.competition.nom }}
                                     <ul>
                             {% endif %}
-                                <li>{{ note.note }} pts accordés par {{ note.idPersonne.nom }} {{ note.idPersonne.prenom }}</li>
+                                <li>{{ note.note }} pts accordés par {{ note.personne.nom }} {{ note.personne.prenom }}</li>
                             {% if loop.last %}<ul>{% endif %}
                         {% endif %}
                     {% endfor %}

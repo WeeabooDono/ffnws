@@ -48,7 +48,7 @@ class ComposerController extends Controller
             $em->persist($composer);
             $em->flush();
 
-            return $this->redirectToRoute('composer_show', array('idEquipe' => $composer->getIdEquipe()->getIdEquipe(), 'idPersonne' => $composer->getIdPersonne()->getIdPersonne()));
+            return $this->redirectToRoute('composer_show', array('equipe_id' => $composer->getEquipe()->getId(), 'personne_id' => $composer->getPersonne()->getId()));
         }
 
         return $this->render('composer/new.html.twig', array(
@@ -60,11 +60,18 @@ class ComposerController extends Controller
     /**
      * Finds and displays a composer entity.
      *
-     * @Route("/{idEquipe}/{idPersonne}", name="composer_show")
+     * @Route("/{equipe_id}/{personne_id}", name="composer_show")
      * @Method("GET")
      */
-    public function showAction(Composer $composer)
+    public function showAction($equipe_id, $personne_id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $composer = $em->getRepository('FFNNatationBundle:Composer')->findOneBy(
+            array(
+                'equipe' => $equipe_id,
+                'personne' => $personne_id
+            )
+        );
         $deleteForm = $this->createDeleteForm($composer);
 
         return $this->render('composer/show.html.twig', array(
@@ -76,11 +83,19 @@ class ComposerController extends Controller
     /**
      * Displays a form to edit an existing composer entity.
      *
-     * @Route("/{idEquipe}/{idPersonne}/edit", name="composer_edit")
+     * @Route("/{equipe_id}/{personne_id}/edit", name="composer_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Composer $composer)
+    public function editAction(Request $request, $equipe_id, $personne_id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $composer = $em->getRepository('FFNNatationBundle:Composer')->findOneBy(
+            array(
+                'equipe' => $equipe_id,
+                'personne' => $personne_id
+            )
+        );
+
         $deleteForm = $this->createDeleteForm($composer);
         $editForm = $this->createForm('FFN\NatationBundle\Form\ComposerType', $composer);
         $editForm->handleRequest($request);
@@ -88,7 +103,7 @@ class ComposerController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('composer_edit', array('idEquipe' => $composer->getIdEquipe()->getIdEquipe(), 'idPersonne' => $composer->getIdPersonne()->getIdPersonne()));
+            return $this->redirectToRoute('composer_edit', array('equipe_id' => $composer->getEquipe()->getId(), 'personne_id' => $composer->getPersonne()->getId()));
         }
 
         return $this->render('composer/edit.html.twig', array(
@@ -101,11 +116,20 @@ class ComposerController extends Controller
     /**
      * Deletes a composer entity.
      *
-     * @Route("/{idComposer}", name="composer_delete")
+     * @Route("/{equipe_id}/{personne_id}", name="composer_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Composer $composer)
+    public function deleteAction(Request $request, $equipe_id, $personne_id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $composer = $em->getRepository('FFNNatationBundle:Composer')->findOneBy(
+            array(
+                'equipe' => $equipe_id,
+                'personne' => $personne_id
+            )
+        );
+
+
         $form = $this->createDeleteForm($composer);
         $form->handleRequest($request);
 
@@ -128,7 +152,7 @@ class ComposerController extends Controller
     private function createDeleteForm(Composer $composer)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('composer_delete', array('idEquipe' => $composer->getIdEquipe()->getIdEquipe(), 'idPersonne' => $composer->getIdPersonne()->getIdPersonne(), 'idComposer' => $composer->getIdComposer())))
+            ->setAction($this->generateUrl('composer_delete', array('equipe_id' => $composer->getEquipe()->getId(), 'personne_id' => $composer->getPersonne()->getId(), 'composer_id' => $composer->getIdComposer())))
             ->setMethod('DELETE')
             ->getForm()
         ;

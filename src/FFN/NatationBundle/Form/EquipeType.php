@@ -20,12 +20,11 @@ class EquipeType extends AbstractType
                 'years' => range(date("Y") - 60, date("Y"))
             ))
             ->add('isActif')
-            ->add('idClub', EntityType::class, array(
+            ->add('club', EntityType::class, array(
                 'class' => 'FFNNatationBundle:Club',
                 'choice_label' => 'nom'))
-            ->add('idPersonne', EntityType::class, array(
-                'class' => 'FFNNatationBundle:Personne',
-                'choice_label' => 'nom'));
+            ->add('personne', EntityType::class, array(
+                'class' => 'FFNNatationBundle:Personne'));
     }/**
      * {@inheritdoc}
      */

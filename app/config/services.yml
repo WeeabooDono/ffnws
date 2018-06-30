@@ -33,3 +33,7 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    ffn.form.registration:
+        class: FFNNatationBundle\Form\UtilisateurType
+        tags:
+            - { name: form.type, alias: ffn_natationbundle_utilisateur }

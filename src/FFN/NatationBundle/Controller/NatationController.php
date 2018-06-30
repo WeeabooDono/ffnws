@@ -46,20 +46,20 @@ class NatationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $noter = $em->getRepository('FFNNatationBundle:Noter')->findByIdCompetition($id);
+        $noter = $em->getRepository('FFNNatationBundle:Noter')->findByCompetition($id);
         // remplissage d'un tableau avec les id d'équipes présentes en compétition
         $equipes_temp = array();
         for ($i = 0; $i< sizeof($noter); $i++){
-           $equipes_temp[$i] = $noter[$i]->getIdEquipe()->getIdEquipe();
+           $equipes_temp[$i] = $noter[$i]->getEquipe()->getId();
         }
         $equipes_temp = array_unique($equipes_temp);
 
         $equipes = array();
         foreach ($equipes_temp as $idequipe){
-            $equipes[] = $em->getRepository('FFNNatationBundle:Equipe')->findOneByIdEquipe($idequipe);
+            $equipes[] = $em->getRepository('FFNNatationBundle:Equipe')->findOneById($idequipe);
         }
 
-        $competitions = $em->getRepository('FFNNatationBundle:Competition')->findOneByIdCompetition($id);
+        $competitions = $em->getRepository('FFNNatationBundle:Competition')->findOneById($id);
 
         return $this->render('@FFNNatation/Natation/information.html.twig', array(
             'concour' => $competitions,
@@ -71,12 +71,12 @@ class NatationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $equipe = $em->getRepository('FFNNatationBundle:Equipe')->findOneByIdEquipe($id);
-        $personnes = $em->getRepository('FFNNatationBundle:Composer')->findByIdEquipe($id);
+        $equipe = $em->getRepository('FFNNatationBundle:Equipe')->findOneById($id);
+        $personnes = $em->getRepository('FFNNatationBundle:Composer')->findByEquipe($id);
         $curr_equipe = array();
         foreach ($personnes as $personne){
             if ($personne->getIsActif())
-                $curr_equipe[] = $personne->getIdPersonne();
+                $curr_equipe[] = $personne->getPersonne();
         }
 
         return $this->render('@FFNNatation/Natation/equipe.html.twig', array(
@@ -89,7 +89,7 @@ class NatationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $personne = $em->getRepository('FFNNatationBundle:Personne')->findOneByIdPersonne($id);
+        $personne = $em->getRepository('FFNNatationBundle:Personne')->findOneById($id);
         $noter = $em->getRepository('FFNNatationBundle:Noter')->findAll();
         return $this->render('@FFNNatation/Natation/information_nageur.html.twig', array(
             'personne'    => $personne,

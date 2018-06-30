@@ -6,7 +6,7 @@
     <table>
         <thead>
             <tr>
-                <th>Idpersonne</th>
+                <th>Id</th>
                 <th>Idequipe</th>
                 <th>IsActif</th>
                 <th>Actions</th>
@@ -15,16 +15,16 @@
         <tbody>
         {% for composer in composers %}
             <tr>
-                <td><a href="{{ path('personne_show', { 'idPersonne': composer.idPersonne.idPersonne }) }}">{{ composer.idPersonne.nom }}</a></td>
-                <td><a href="{{ path('equipe_show', { 'idEquipe': composer.idEquipe.idEquipe }) }}">{{ composer.idEquipe.nom }}</a></td>
+                <td><a href="{{ path('personne_show', { 'personne_id': composer.personne.id }) }}">{{ composer.personne.nom }} {{ composer.personne.prenom }}</a></td>
+                <td><a href="{{ path('equipe_show', { 'equipe_id': composer.equipe.id }) }}">{{  composer.equipe.nom }}</a></td>
                 <td>{{ composer.isActif }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('composer_show', { 'idEquipe': composer.idEquipe.idEquipe, 'idPersonne': composer.idPersonne.idPersonne }) }}">show</a>
+                            <a href="{{ path('composer_show', { 'equipe_id': composer.equipe.id, 'personne_id': composer.personne.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('composer_edit', { 'idEquipe': composer.idEquipe.idEquipe, 'idPersonne': composer.idPersonne.idPersonne }) }}">edit</a>
+                            <a href="{{ path('composer_edit', { 'equipe_id': composer.equipe.id, 'personne_id': composer.personne.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

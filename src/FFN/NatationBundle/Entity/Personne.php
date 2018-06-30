@@ -20,7 +20,7 @@ class Personne
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="personne_id_personne_seq", allocationSize=1, initialValue=1)
      */
-    private $idPersonne;
+    private $id;
 
     /**
      * @var string|null
@@ -70,14 +70,14 @@ class Personne
      *   }
      * )
      */
-    private $idEquipe;
+    private $equipe;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->idEquipe = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->equipe = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -86,9 +86,9 @@ class Personne
      *
      * @return int
      */
-    public function getIdPersonne()
+    public function getId()
     {
-        return $this->idPersonne;
+        return $this->id;
     }
 
     /**
@@ -220,7 +220,7 @@ class Personne
      */
     public function addIdEquipe(\FFN\NatationBundle\Entity\Equipe $idEquipe)
     {
-        $this->idEquipe[] = $idEquipe;
+        $this->equipe[] = $idEquipe;
 
         return $this;
     }
@@ -234,7 +234,7 @@ class Personne
      */
     public function removeIdEquipe(\FFN\NatationBundle\Entity\Equipe $idEquipe)
     {
-        return $this->idEquipe->removeElement($idEquipe);
+        return $this->equipe->removeElement($idEquipe);
     }
 
     /**
@@ -242,8 +242,13 @@ class Personne
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getIdEquipe()
+    public function getEquipe()
     {
-        return $this->idEquipe;
+        return $this->equipe;
+    }
+
+    public function __toString()
+    {
+       return $this->nom.' '.$this->prenom;
     }
 }

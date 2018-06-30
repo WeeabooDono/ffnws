@@ -23,8 +23,7 @@ class Utilisateur extends BaseUser
      *   @ORM\JoinColumn(name="id_personne", referencedColumnName="id_personne")
      * })
      */
-    private $idPersonne;
-
+    protected $id;
 
     public function __construct()
     {
@@ -34,13 +33,13 @@ class Utilisateur extends BaseUser
     /**
      * Set idPersonne.
      *
-     * @param \FFN\NatationBundle\Entity\Personne $idPersonne
+     * @param \FFN\NatationBundle\Entity\Personne $id
      *
      * @return Utilisateur
      */
-    public function setIdPersonne(\FFN\NatationBundle\Entity\Personne $idPersonne)
+    public function setId(\FFN\NatationBundle\Entity\Personne $id)
     {
-        $this->idPersonne = $idPersonne;
+        $this->id = $id;
 
         return $this;
     }
@@ -50,8 +49,19 @@ class Utilisateur extends BaseUser
      *
      * @return \FFN\NatationBundle\Entity\Personne
      */
-    public function getIdPersonne()
+    public function getId()
     {
-        return $this->idPersonne;
+        return $this->id;
+    }
+
+
+    /**
+     * Get idPersonne.
+     *
+     * @return \FFN\NatationBundle\Entity\Personne
+     */
+    public function getPersonne()
+    {
+        return $this->id;
     }
 }

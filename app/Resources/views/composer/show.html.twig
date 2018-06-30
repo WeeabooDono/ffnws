@@ -7,12 +7,12 @@
     <table>
         <tbody>
             <tr>
-                <th>Nomequipe</th>
-                <td>{{ composer.idEquipe.nom }}</td>
+                <th>Equipe</th>
+                <td>{{ composer.equipe.nom }}</td>
             </tr>
             <tr>
-                <th>Nomepersonne</th>
-                <td>{{ composer.idPersonne.nom }}</td>
+                <th>Personne</th>
+                <td>{{ composer.personne.nom }} {{ composer.personne.prenom }}</td>
             </tr>
             <tr>
                 <th>Isactif</th>
@@ -27,14 +27,12 @@
             <a href="{{ path('composer_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('composer_edit', { 'idEquipe': composer.idEquipe.idEquipe, 'idPersonne': composer.idPersonne.idPersonne }) }}">Edit</a>
+            <a href="{{ path('composer_edit', { 'equipe_id': composer.equipe.id, 'personne_id': composer.personne.id }) }}">edit</a>
         </li>
-        <li>Delete
-            {#
+        <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
-            #}
         </li>
     </ul>
 

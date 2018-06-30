@@ -7,7 +7,7 @@
         <tbody>
             <tr>
                 <th>Idcompetition</th>
-                <td>{{ competition.idCompetition }}</td>
+                <td>{{ competition.id }}</td>
             </tr>
             <tr>
                 <th>Nom</th>
@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>Lieu</th>
-                <td>{{ competition.idLieu.nom }}</td>
+                <td>{{ competition.lieu.nom }}</td>
             </tr>
             <tr>
                 <th>Datedebut</th>
@@ -33,7 +33,7 @@
             <a href="{{ path('competition_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('competition_edit', { 'idCompetition': competition.idCompetition }) }}">Edit</a>
+            <a href="{{ path('competition_edit', { 'competition_id': competition.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

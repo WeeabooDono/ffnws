@@ -20,7 +20,7 @@ class Equipe
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="equipe_id_equipe_seq", allocationSize=1, initialValue=1)
      */
-    private $idEquipe;
+    private $id;
 
     /**
      * @var string|null
@@ -51,21 +51,21 @@ class Equipe
      *   @ORM\JoinColumn(name="id_club", referencedColumnName="id_club")
      * })
      */
-    private $idClub;
+    private $club;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Personne", mappedBy="idEquipe")
      */
-    private $idPersonne;
+    private $personne;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->idPersonne = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->personne = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -74,9 +74,9 @@ class Equipe
      *
      * @return int
      */
-    public function getIdEquipe()
+    public function getId()
     {
-        return $this->idEquipe;
+        return $this->id;
     }
 
     /**
@@ -158,9 +158,9 @@ class Equipe
      *
      * @return Equipe
      */
-    public function setIdClub(\FFN\NatationBundle\Entity\Club $idClub = null)
+    public function setClub(\FFN\NatationBundle\Entity\Club $club = null)
     {
-        $this->idClub = $idClub;
+        $this->club = $club;
 
         return $this;
     }
@@ -170,9 +170,9 @@ class Equipe
      *
      * @return \FFN\NatationBundle\Entity\Club|null
      */
-    public function getIdClub()
+    public function getClub()
     {
-        return $this->idClub;
+        return $this->club;
     }
 
     /**
@@ -184,7 +184,7 @@ class Equipe
      */
     public function addIdPersonne(\FFN\NatationBundle\Entity\Personne $idPersonne)
     {
-        $this->idPersonne[] = $idPersonne;
+        $this->personne[] = $idPersonne;
 
         return $this;
     }
@@ -198,7 +198,7 @@ class Equipe
      */
     public function removeIdPersonne(\FFN\NatationBundle\Entity\Personne $idPersonne)
     {
-        return $this->idPersonne->removeElement($idPersonne);
+        return $this->personne->removeElement($idPersonne);
     }
 
     /**
@@ -206,8 +206,8 @@ class Equipe
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getIdPersonne()
+    public function getPersonne()
     {
-        return $this->idPersonne;
+        return $this->personne;
     }
 }

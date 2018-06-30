@@ -8,15 +8,15 @@
         <tbody>
             <tr>
                 <th>Nomequipe</th>
-                <td>{{ noter.idEquipe.nom }}</td>
+                <td>{{ noter.equipe.nom }}</td>
             </tr>
             <tr>
                 <th>Nomepersonne</th>
-                <td>{{ noter.idPersonne.nom }}</td>
+                <td>{{ noter.personne.nom }}</td>
             </tr>
             <tr>
                 <th>Nomcompetition</th>
-                <td>{{ noter.idCompetition.nom }}</td>
+                <td>{{ noter.competition.nom }}</td>
             </tr>
 
         </tbody>
@@ -27,14 +27,12 @@
             <a href="{{ path('noter_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('noter_edit', { 'idEquipe': noter.idEquipe.idEquipe, 'idPersonne': noter.idPersonne.idPersonne, 'idCompetition': noter.idCompetition.idCompetition }) }}">Edit</a>
+            <a href="{{ path('noter_edit', { 'equipe_id': noter.equipe.id, 'personne_id': noter.personne.id, 'competition_id': noter.competition.id }) }}">edit</a>
         </li>
-        <li>Delete
-            {#
+        <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
-            #}
         </li>
     </ul>
 

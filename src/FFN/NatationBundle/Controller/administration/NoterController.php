@@ -48,7 +48,7 @@ class NoterController extends Controller
             $em->persist($noter);
             $em->flush();
 
-            return $this->redirectToRoute('noter_show', array('idEquipe' => $noter->getIdEquipe()->getIdEquipe(), 'idPersonne' => $noter->getIdPersonne()->getIdPersonne(), 'idCompetition' => $noter->getIdCompetition()->getIdCompetition()));
+            return $this->redirectToRoute('noter_show', array('equipe_id' => $noter->getEquipe()->getId(), 'personne_id' => $noter->getPersonne()->getId(), 'competition_id' => $noter->getCompetition()->getId()));
         }
 
         return $this->render('noter/new.html.twig', array(
@@ -60,11 +60,20 @@ class NoterController extends Controller
     /**
      * Finds and displays a noter entity.
      *
-     * @Route("/{idEquipe}/{idPersonne}/{idCompetition}", name="noter_show")
+     * @Route("/{equipe_id}/{personne_id}/{competition_id}", name="noter_show")
      * @Method("GET")
      */
-    public function showAction(Noter $noter)
+    public function showAction($equipe_id, $personne_id, $competition_id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $noter = $em->getRepository('FFNNatationBundle:Noter')->findOneBy(
+            array(
+                'equipe' => $equipe_id,
+                'personne' => $personne_id,
+                'competition' => $competition_id
+            )
+        );
+
         $deleteForm = $this->createDeleteForm($noter);
 
         return $this->render('noter/show.html.twig', array(
@@ -76,11 +85,20 @@ class NoterController extends Controller
     /**
      * Displays a form to edit an existing noter entity.
      *
-     * @Route("/{idEquipe}/{idPersonne}/{idCompetition}/edit", name="noter_edit")
+     * @Route("/{equipe_id}/{personne_id}/{competition_id}/edit", name="noter_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Noter $noter)
+    public function editAction(Request $request, $equipe_id, $personne_id, $competition_id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $noter = $em->getRepository('FFNNatationBundle:Noter')->findOneBy(
+            array(
+                'equipe' => $equipe_id,
+                'personne' => $personne_id,
+                'competition' => $competition_id
+            )
+        );
+
         $deleteForm = $this->createDeleteForm($noter);
         $editForm = $this->createForm('FFN\NatationBundle\Form\NoterType', $noter);
         $editForm->handleRequest($request);
@@ -88,7 +106,7 @@ class NoterController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('noter_edit', array('idEquipe' => $noter->getIdEquipe()->getIdEquipe(), 'idPersonne' => $noter->getIdPersonne()->getIdPersonne(), 'idCompetition' => $noter->getIdCompetition()->getIdCompetition()));
+            return $this->redirectToRoute('noter_edit', array('equipe_id' => $noter->getEquipe()->getId(), 'personne_id' => $noter->getPersonne()->getId(), 'competition_id' => $noter->getCompetition()->getId()));
         }
 
         return $this->render('noter/edit.html.twig', array(
@@ -101,11 +119,19 @@ class NoterController extends Controller
     /**
      * Deletes a noter entity.
      *
-     * @Route("/{idNoter}", name="noter_delete")
+     * @Route("/{equipe_id}/{personne_id}/{competition_id}", name="noter_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Noter $noter)
+    public function deleteAction(Request $request, $equipe_id, $personne_id, $competition_id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $noter = $em->getRepository('FFNNatationBundle:Noter')->findOneBy(
+            array(
+                'equipe' => $equipe_id,
+                'personne' => $personne_id,
+                'competition' => $competition_id
+            )
+        );
         $form = $this->createDeleteForm($noter);
         $form->handleRequest($request);
 
@@ -128,7 +154,7 @@ class NoterController extends Controller
     private function createDeleteForm(Noter $noter)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('noter_delete', array('idEquipe' => $noter->getIdEquipe()->getIdEquipe(), 'idPersonne' => $noter->getIdPersonne()->getIdPersonne(), 'idCompetition' => $noter->getIdCompetition()->getIdCompetition(), 'idNoter' => $noter->getIdNoter())))
+            ->setAction($this->generateUrl('noter_delete', array('equipe_id' => $noter->getEquipe()->getId(), 'personne_id' => $noter->getPersonne()->getId(), 'competition_id' => $noter->getCompetition()->getId(), 'idNoter' => $noter->getIdNoter())))
             ->setMethod('DELETE')
             ->getForm()
         ;

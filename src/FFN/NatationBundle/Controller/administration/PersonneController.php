@@ -48,7 +48,7 @@ class PersonneController extends Controller
             $em->persist($personne);
             $em->flush();
 
-            return $this->redirectToRoute('personne_show', array('idPersonne' => $personne->getIdpersonne()));
+            return $this->redirectToRoute('personne_show', array('personne_id' => $personne->getId()));
         }
 
         return $this->render('personne/new.html.twig', array(
@@ -60,15 +60,15 @@ class PersonneController extends Controller
     /**
      * Finds and displays a personne entity.
      *
-     * @Route("/{idPersonne}", name="personne_show")
+     * @Route("/{personne_id}", name="personne_show")
      * @Method("GET")
      */
-    public function showAction(Personne $personne)
+    public function showAction(Personne $personne_id)
     {
-        $deleteForm = $this->createDeleteForm($personne);
+        $deleteForm = $this->createDeleteForm($personne_id);
 
         return $this->render('personne/show.html.twig', array(
-            'personne' => $personne,
+            'personne' => $personne_id,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -76,23 +76,23 @@ class PersonneController extends Controller
     /**
      * Displays a form to edit an existing personne entity.
      *
-     * @Route("/{idPersonne}/edit", name="personne_edit")
+     * @Route("/{personne_id}/edit", name="personne_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Personne $personne)
+    public function editAction(Request $request, Personne $personne_id)
     {
-        $deleteForm = $this->createDeleteForm($personne);
-        $editForm = $this->createForm('FFN\NatationBundle\Form\PersonneType', $personne);
+        $deleteForm = $this->createDeleteForm($personne_id);
+        $editForm = $this->createForm('FFN\NatationBundle\Form\PersonneType', $personne_id);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('personne_edit', array('idPersonne' => $personne->getIdpersonne()));
+            return $this->redirectToRoute('personne_edit', array('personne_id' => $personne_id->getId()));
         }
 
         return $this->render('personne/edit.html.twig', array(
-            'personne' => $personne,
+            'personne' => $personne_id,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -101,17 +101,17 @@ class PersonneController extends Controller
     /**
      * Deletes a personne entity.
      *
-     * @Route("/{idPersonne}", name="personne_delete")
+     * @Route("/{personne_id}", name="personne_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Personne $personne)
+    public function deleteAction(Request $request, Personne $personne_id)
     {
-        $form = $this->createDeleteForm($personne);
+        $form = $this->createDeleteForm($personne_id);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($personne);
+            $em->remove($personne_id);
             $em->flush();
         }
 
@@ -128,7 +128,7 @@ class PersonneController extends Controller
     private function createDeleteForm(Personne $personne)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('personne_delete', array('idPersonne' => $personne->getIdpersonne())))
+            ->setAction($this->generateUrl('personne_delete', array('personne_id' => $personne->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

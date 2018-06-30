@@ -29,7 +29,7 @@ class Composer
      *   @ORM\JoinColumn(name="id_equipe", referencedColumnName="id_equipe")
      * })
      */
-    private $idEquipe;
+    private $equipe;
 
     /**
      * @var \Personne
@@ -41,7 +41,7 @@ class Composer
      *   @ORM\JoinColumn(name="id_personne", referencedColumnName="id_personne")
      * })
      */
-    private $idPersonne;
+    private $personne;
 
 
 
@@ -72,13 +72,13 @@ class Composer
     /**
      * Set idEquipe.
      *
-     * @param \FFN\NatationBundle\Entity\Equipe $idEquipe
+     * @param \FFN\NatationBundle\Entity\Equipe $equipe
      *
      * @return Composer
      */
-    public function setIdEquipe(\FFN\NatationBundle\Entity\Equipe $idEquipe)
+    public function setEquipe(\FFN\NatationBundle\Entity\Equipe $equipe)
     {
-        $this->idEquipe = $idEquipe;
+        $this->equipe = $equipe;
 
         return $this;
     }
@@ -88,21 +88,21 @@ class Composer
      *
      * @return \FFN\NatationBundle\Entity\Equipe
      */
-    public function getIdEquipe()
+    public function getEquipe()
     {
-        return $this->idEquipe;
+        return $this->equipe;
     }
 
     /**
      * Set idPersonne.
      *
-     * @param \FFN\NatationBundle\Entity\Personne $idPersonne
+     * @param \FFN\NatationBundle\Entity\Personne $personne
      *
      * @return Composer
      */
-    public function setIdPersonne(\FFN\NatationBundle\Entity\Personne $idPersonne)
+    public function setPersonne(\FFN\NatationBundle\Entity\Personne $personne)
     {
-        $this->idPersonne = $idPersonne;
+        $this->personne = $personne;
 
         return $this;
     }
@@ -112,9 +112,9 @@ class Composer
      *
      * @return \FFN\NatationBundle\Entity\Personne
      */
-    public function getIdPersonne()
+    public function getPersonne()
     {
-        return $this->idPersonne;
+        return $this->personne;
     }
 
     /**

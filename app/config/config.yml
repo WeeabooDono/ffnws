@@ -146,3 +146,18 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
+    registration:
+        form:
+            type: FFNNatationBundle\Form\UtilisateurType
+        confirmation:
+            enabled: true
+            from_email:
+                address:        registration@example.com
+                sender_name:    Demo Registration
+            template:   '@FOSUser/Registration/email.txt.twig'
+    from_email:
+        address:        noreply@example.com
+        sender_name:    Demo App
+    resetting:
+        email:
+            template:   email/password_resetting.email.twig

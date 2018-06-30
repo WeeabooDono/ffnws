@@ -29,7 +29,7 @@ class UtilisateurRole
      *   @ORM\JoinColumn(name="id_personne", referencedColumnName="id_personne")
      * })
      */
-    private $idPersonne;
+    private $personne;
 
     /**
      * @var \Role
@@ -41,7 +41,7 @@ class UtilisateurRole
      *   @ORM\JoinColumn(name="id_role", referencedColumnName="id_role")
      * })
      */
-    private $idRole;
+    private $role;
 
     /**
      * @var \Competition
@@ -53,7 +53,7 @@ class UtilisateurRole
      *   @ORM\JoinColumn(name="id_competition", referencedColumnName="id_competition")
      * })
      */
-    private $idCompetition;
+    private $competition;
 
 
 
@@ -84,13 +84,13 @@ class UtilisateurRole
     /**
      * Set idPersonne.
      *
-     * @param \FFN\NatationBundle\Entity\Personne $idPersonne
+     * @param \FFN\NatationBundle\Entity\Personne $personne
      *
      * @return UtilisateurRole
      */
-    public function setIdPersonne(\FFN\NatationBundle\Entity\Personne $idPersonne)
+    public function setPersonne(\FFN\NatationBundle\Entity\Personne $personne)
     {
-        $this->idPersonne = $idPersonne;
+        $this->personne = $personne;
 
         return $this;
     }
@@ -100,21 +100,21 @@ class UtilisateurRole
      *
      * @return \FFN\NatationBundle\Entity\Personne
      */
-    public function getIdPersonne()
+    public function getPersonne()
     {
-        return $this->idPersonne;
+        return $this->personne;
     }
 
     /**
      * Set idRole.
      *
-     * @param \FFN\NatationBundle\Entity\Role $idRole
+     * @param \FFN\NatationBundle\Entity\Role $role
      *
      * @return UtilisateurRole
      */
-    public function setIdRole(\FFN\NatationBundle\Entity\Role $idRole)
+    public function setRole(\FFN\NatationBundle\Entity\Role $role)
     {
-        $this->idRole = $idRole;
+        $this->role = $role;
 
         return $this;
     }
@@ -124,21 +124,21 @@ class UtilisateurRole
      *
      * @return \FFN\NatationBundle\Entity\Role
      */
-    public function getIdRole()
+    public function getRole()
     {
-        return $this->idRole;
+        return $this->role;
     }
 
     /**
      * Set idCompetition.
      *
-     * @param \FFN\NatationBundle\Entity\Competition $idCompetition
+     * @param \FFN\NatationBundle\Entity\Competition $competition
      *
      * @return UtilisateurRole
      */
-    public function setIdCompetition(\FFN\NatationBundle\Entity\Competition $idCompetition)
+    public function setCompetition(\FFN\NatationBundle\Entity\Competition $competition)
     {
-        $this->idCompetition = $idCompetition;
+        $this->competition = $competition;
 
         return $this;
     }
@@ -148,9 +148,9 @@ class UtilisateurRole
      *
      * @return \FFN\NatationBundle\Entity\Competition
      */
-    public function getIdCompetition()
+    public function getCompetition()
     {
-        return $this->idCompetition;
+        return $this->competition;
     }
 
     /**

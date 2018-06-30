@@ -7,7 +7,7 @@
         <tbody>
             <tr>
                 <th>Idequipe</th>
-                <td>{{ equipe.idEquipe }}</td>
+                <td>{{ equipe.id }}</td>
             </tr>
             <tr>
                 <th>Nom</th>
@@ -15,7 +15,7 @@
             </tr>
             <tr>
                 <th>Club</th>
-                <td>{{ equipe.idClub.nom }}</td>
+                <td>{{ equipe.club.nom }}</td>
             </tr>
             <tr>
                 <th>Datecreation</th>
@@ -33,7 +33,7 @@
             <a href="{{ path('equipe_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('equipe_edit', { 'idEquipe': equipe.idEquipe }) }}">Edit</a>
+            <a href="{{ path('equipe_edit', { 'equipe_id': equipe.id }) }}">edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

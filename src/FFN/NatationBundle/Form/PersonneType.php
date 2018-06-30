@@ -19,13 +19,11 @@ class PersonneType extends AbstractType
             ->add('prenom')
             ->add('adresse')
             ->add('dateNaissance', BirthdayType::class, array(
-                'years' => range(date("Y") - 60, date("Y"))
-            ))
+                'years' => range(date("Y") - 60, date("Y"))))
             ->add('codePostal');
-            /*->add('idEquipe',EntityType::class, array(
-                'class' => 'FFNNatationBundle:Equipe',
-                'choice_label' => 'nom'));*/
-    }/**
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

@@ -6,9 +6,9 @@
     <table>
         <thead>
             <tr>
-                <th>Idpersonne</th>
-                <th>Idequipe</th>
-                <th>Idcompetition</th>
+                <th>ID</th>
+                <th>equipe</th>
+                <th>Competition</th>
                 <th>Note</th>
                 <th>Actions</th>
             </tr>
@@ -16,17 +16,17 @@
         <tbody>
         {% for noter in noters %}
             <tr>
-                <td><a href="{{ path('personne_show', { 'idPersonne': noter.idPersonne.idPersonne }) }}">{{ noter.idPersonne.nom }}</a></td>
-                <td><a href="{{ path('equipe_show', { 'idEquipe': noter.idEquipe.idEquipe }) }}">{{ noter.idEquipe.nom }}</a></td>
-                <td><a href="{{ path('competition_show', { 'idCompetition': noter.idCompetition.idCompetition }) }}">{{ noter.idCompetition.nom }}</a></td>
+                <td><a href="{{ path('personne_show', { 'personne_id': noter.personne.id }) }}">{{ noter.personne.nom }}</a></td>
+                <td><a href="{{ path('equipe_show', { 'equipe_id': noter.equipe.id }) }}">{{ noter.equipe.nom }}</a></td>
+                <td><a href="{{ path('competition_show', { 'competition_id': noter.competition.id }) }}">{{ noter.competition.nom }}</a></td>
                 <td>{{ noter.note }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('noter_show', { 'idEquipe': noter.idEquipe.idEquipe, 'idPersonne': noter.idPersonne.idPersonne, 'idCompetition': noter.idCompetition.idCompetition }) }}">show</a>
+                            <a href="{{ path('noter_show', { 'equipe_id': noter.equipe.id, 'personne_id': noter.personne.id, 'competition_id': noter.competition.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('noter_edit', { 'idEquipe': noter.idEquipe.idEquipe, 'idPersonne': noter.idPersonne.idPersonne, 'idCompetition': noter.idCompetition.idCompetition }) }}">edit</a>
+                            <a href="{{ path('noter_edit', { 'equipe_id': noter.equipe.id, 'personne_id': noter.personne.id, 'competition_id': noter.competition.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

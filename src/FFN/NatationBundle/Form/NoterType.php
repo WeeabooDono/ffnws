@@ -17,15 +17,14 @@ class NoterType extends AbstractType
         //$lieu = $builder->getData()->getIdLieu()->getIdLieu();
         // 'choice_value' => 'idLieu'
         $builder->add('note')
-            ->add('idPersonne', EntityType::class, array(
-                'class' => 'FFNNatationBundle:Personne',
-                'choice_label' => 'nom'
+            ->add('personne', EntityType::class, array(
+                'class' => 'FFNNatationBundle:Personne'
             ))
-            ->add('idEquipe', EntityType::class, array(
+            ->add('equipe', EntityType::class, array(
                 'class' => 'FFNNatationBundle:Equipe',
                 'choice_label' => 'nom'
             ))
-            ->add('idCompetition', EntityType::class, array(
+            ->add('competition', EntityType::class, array(
                 'class' => 'FFNNatationBundle:Competition',
                 'choice_label' => 'nom'
             ));

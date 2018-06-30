@@ -23,7 +23,7 @@ class CompetitionType extends AbstractType
             ->add('dateFin', BirthdayType::class, array(
                 'years' => range(date("Y") - 60, date("Y"))
             ))
-            ->add('idLieu', EntityType::class, array(
+            ->add('lieu', EntityType::class, array(
                 'class' => 'FFNNatationBundle:Lieu',
                 'choice_label' => 'nom'
             ));

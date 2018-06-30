@@ -14,20 +14,21 @@ class UtilisateurRoleType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('idPersonne', EntityType::class, array(
-                'class' => 'FFNNatationBundle:Personne',
-                'choice_label' => 'nom'
+        $builder->add('personne', EntityType::class, array(
+                'class' => 'FFNNatationBundle:Personne'
             ))
-            ->add('idRole', EntityType::class, array(
+            ->add('role', EntityType::class, array(
                 'class' => 'FFNNatationBundle:Role',
                 'choice_label' => 'nom'
             ))
-            ->add('idCompetition', EntityType::class, array(
+            ->add('competition', EntityType::class, array(
                 'class' => 'FFNNatationBundle:Competition',
                 'choice_label' => 'nom'
             ))
             ->add('rang');
-    }/**
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

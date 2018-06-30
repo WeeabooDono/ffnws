@@ -48,7 +48,7 @@ class UtilisateurRoleController extends Controller
             $em->persist($utilisateurrole);
             $em->flush();
 
-            return $this->redirectToRoute('utilisateurrole_show', array('idRole' => $utilisateurrole->getIdRole()->getIdRole(), 'idPersonne' => $utilisateurrole->getIdPersonne()->getIdPersonne(), 'idCompetition' => $utilisateurrole->getIdCompetition()->getIdCompetition()));
+            return $this->redirectToRoute('utilisateurrole_show', array('role_id' => $utilisateurrole->getRole()->getId(), 'personne_id' => $utilisateurrole->getPersonne()->getId(), 'competition_id' => $utilisateurrole->getCompetition()->getId()));
         }
 
         return $this->render('utilisateurrole/new.html.twig', array(
@@ -60,11 +60,20 @@ class UtilisateurRoleController extends Controller
     /**
      * Finds and displays a utilisateurrole entity.
      *
-     * @Route("/{idRole}/{idPersonne}/{idCompetition}", name="utilisateurrole_show")
+     * @Route("/{role_id}/{personne_id}/{competition_id}", name="utilisateurrole_show")
      * @Method("GET")
      */
-    public function showAction(UtilisateurRole $utilisateurrole)
+    public function showAction($role_id, $personne_id, $competition_id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $utilisateurrole = $em->getRepository('FFNNatationBundle:UtilisateurRole')->findOneBy(
+            array(
+                'role' => $role_id,
+                'personne' => $personne_id,
+                'competition' => $competition_id
+            )
+        );
+
         $deleteForm = $this->createDeleteForm($utilisateurrole);
 
         return $this->render('utilisateurrole/show.html.twig', array(
@@ -76,11 +85,20 @@ class UtilisateurRoleController extends Controller
     /**
      * Displays a form to edit an existing utilisateurrole entity.
      *
-     * @Route("/{idRole}/{idPersonne}/{idCompetition}/edit", name="utilisateurrole_edit")
+     * @Route("/{role_id}/{personne_id}/{competition_id}/edit", name="utilisateurrole_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, UtilisateurRole $utilisateurrole)
+    public function editAction(Request $request, $role_id, $personne_id, $competition_id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $utilisateurrole = $em->getRepository('FFNNatationBundle:UtilisateurRole')->findOneBy(
+            array(
+                'role' => $role_id,
+                'personne' => $personne_id,
+                'competition' => $competition_id
+            )
+        );
+
         $deleteForm = $this->createDeleteForm($utilisateurrole);
         $editForm = $this->createForm('FFN\NatationBundle\Form\UtilisateurRoleType', $utilisateurrole);
         $editForm->handleRequest($request);
@@ -88,7 +106,7 @@ class UtilisateurRoleController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('utilisateurrole_edit', array('idRole' => $utilisateurrole->getIdRole()->getIdRole(), 'idPersonne' => $utilisateurrole->getIdPersonne()->getIdPersonne(), 'idCompetition' => $utilisateurrole->getIdCompetition()->getIdCompetition()));
+            return $this->redirectToRoute('utilisateurrole_edit', array('role_id' => $utilisateurrole->getRole()->getId(), 'personne_id' => $utilisateurrole->getPersonne()->getId(), 'competition_id' => $utilisateurrole->getCompetition()->getId()));
         }
 
         return $this->render('utilisateurrole/edit.html.twig', array(
@@ -101,11 +119,20 @@ class UtilisateurRoleController extends Controller
     /**
      * Deletes a utilisateurrole entity.
      *
-     * @Route("/{idUtilisateurRole}", name="utilisateurrole_delete")
+     * @Route("/{role_id}/{personne_id}/{competition_id}", name="utilisateurrole_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, UtilisateurRole $utilisateurrole)
+    public function deleteAction(Request $request, $role_id, $personne_id, $competition_id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $utilisateurrole = $em->getRepository('FFNNatationBundle:UtilisateurRole')->findOneBy(
+            array(
+                'role' => $role_id,
+                'personne' => $personne_id,
+                'competition' => $competition_id
+            )
+        );
+
         $form = $this->createDeleteForm($utilisateurrole);
         $form->handleRequest($request);
 
@@ -128,7 +155,7 @@ class UtilisateurRoleController extends Controller
     private function createDeleteForm(UtilisateurRole $utilisateurrole)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('utilisateurrole_delete', array('idRole' => $utilisateurrole->getIdRole()->getIdRole(), 'idPersonne' => $utilisateurrole->getIdPersonne()->getIdPersonne(), 'idCompetition' => $utilisateurrole->getIdCompetition()->getIdCompetition(), 'idUtilisateurRole' => $utilisateurrole->getIdUtilisateurRole())))
+            ->setAction($this->generateUrl('utilisateurrole_delete', array('role_id' => $utilisateurrole->getRole()->getId(), 'personne_id' => $utilisateurrole->getPersonne()->getId(), 'competition_id' => $utilisateurrole->getCompetition()->getId(), 'idUtilisateurRole' => $utilisateurrole->getIdUtilisateurRole())))
             ->setMethod('DELETE')
             ->getForm()
         ;

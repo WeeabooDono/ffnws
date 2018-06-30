@@ -6,7 +6,7 @@
     <table>
         <thead>
             <tr>
-                <th>Idequipe</th>
+                <th>OD</th>
                 <th>Nom</th>
                 <th>Club</th>
                 <th>Datecreation</th>
@@ -17,18 +17,18 @@
         <tbody>
         {% for equipe in equipes %}
             <tr>
-                <td><a href="{{ path('equipe_show', { 'idEquipe': equipe.idEquipe }) }}">{{ equipe.idEquipe }}</a></td>
+                <td><a href="{{ path('equipe_show', { 'equipe_id': equipe.id }) }}">{{ equipe.id }}</a></td>
                 <td>{{ equipe.nom }}</td>
-                <td><a href="{{ path('club_show', { 'idClub': equipe.idClub.idClub }) }}">{{ equipe.idClub.nom }}</a></td>
+                <td><a href="{{ path('club_show', { 'club_id': equipe.club.id }) }}">{{ equipe.club.nom }}</a></td>
                 <td>{% if equipe.dateCreation %}{{ equipe.dateCreation|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if equipe.isActif %}Yes{% else %}No{% endif %}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('equipe_show', { 'idEquipe': equipe.idEquipe }) }}">show</a>
+                            <a href="{{ path('equipe_show', { 'equipe_id': equipe.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('equipe_edit', { 'idEquipe': equipe.idEquipe }) }}">edit</a>
+                            <a href="{{ path('equipe_edit', { 'equipe_id': equipe.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

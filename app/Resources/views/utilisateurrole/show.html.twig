@@ -8,15 +8,15 @@
         <tbody>
             <tr>
                 <th>Nomequipe</th>
-                <td>{{ utilisateurrole.idRole.nom }}</td>
+                <td>{{ utilisateurrole.role.nom }}</td>
             </tr>
             <tr>
                 <th>Nomepersonne</th>
-                <td>{{ utilisateurrole.idPersonne.nom }}</td>
+                <td>{{ utilisateurrole.personne.nom }}</td>
             </tr>
             <tr>
                 <th>Nomcompetition</th>
-                <td>{{ utilisateurrole.idCompetition.nom }}</td>
+                <td>{{ utilisateurrole.competition.nom }}</td>
             </tr>
             <tr>
                 <th>Rang</th>
@@ -30,14 +30,12 @@
             <a href="{{ path('utilisateurrole_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('utilisateurrole_edit', { 'idRole': utilisateurrole.idRole.idRole, 'idPersonne': utilisateurrole.idPersonne.idPersonne, 'idCompetition': utilisateurrole.idCompetition.idCompetition }) }}">Edit</a>
+            <a href="{{ path('utilisateurrole_edit', { 'role_id': utilisateurrole.role.id, 'personne_id': utilisateurrole.personne.id, 'competition_id': utilisateurrole.competition.id }) }}">edit</a>
         </li>
-        <li>Delete
-            {#
+        <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
-            #}
         </li>
     </ul>
 

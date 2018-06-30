@@ -6,7 +6,7 @@
     <table>
         <thead>
             <tr>
-                <th>Idrole</th>
+                <th>ID</th>
                 <th>Nom</th>
                 <th>Actions</th>
             </tr>
@@ -14,15 +14,15 @@
         <tbody>
         {% for role in roles %}
             <tr>
-                <td><a href="{{ path('role_show', { 'idRole': role.idRole }) }}">{{ role.idRole }}</a></td>
+                <td><a href="{{ path('role_show', { 'role_id': role.id }) }}">{{ role.id }}</a></td>
                 <td>{{ role.nom }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('role_show', { 'idRole': role.idRole }) }}">show</a>
+                            <a href="{{ path('role_show', { 'role_id': role.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('role_edit', { 'idRole': role.idRole }) }}">edit</a>
+                            <a href="{{ path('role_edit', { 'role_id': role.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

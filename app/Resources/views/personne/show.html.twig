@@ -6,8 +6,8 @@
     <table>
         <tbody>
             <tr>
-                <th>Idpersonne</th>
-                <td>{{ personne.idPersonne }}</td>
+                <th>Id</th>
+                <td>{{ personne.id }}</td>
             </tr>
             <tr>
                 <th>Nom</th>
@@ -37,7 +37,7 @@
             <a href="{{ path('personne_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('personne_edit', { 'idPersonne': personne.idPersonne }) }}">Edit</a>
+            <a href="{{ path('personne_edit', { 'personne_id': personne.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

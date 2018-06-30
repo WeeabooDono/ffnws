@@ -6,7 +6,7 @@
     <table>
         <thead>
             <tr>
-                <th>Idclub</th>
+                <th>ID</th>
                 <th>Nom</th>
                 <th>Lieu</th>
                 <th>Directeur</th>
@@ -16,17 +16,17 @@
         <tbody>
         {% for club in clubs %}
             <tr>
-                <td><a href="{{ path('club_show', { 'idClub': club.idClub }) }}">{{ club.idClub }}</a></td>
+                <td><a href="{{ path('club_show', { 'club_id': club.id }) }}">{{ club.id }}</a></td>
                 <td>{{ club.nom }}</td>
-                <td><a href="{{ path('lieu_show', { 'idLieu': club.idLieu.idLieu }) }}">{{ club.idLieu.nom }}</a></td>
-                <td><a href="{{ path('personne_show', { 'idPersonne': club.idPersonne.idPersonne }) }}">{{ club.idPersonne.nom }} {{ club.idPersonne.prenom }}</a></td>
+                <td><a href="{{ path('lieu_show', { 'lieu_id': club.lieu.id }) }}">{{ club.lieu.nom }}</a></td>
+                <td><a href="{{ path('personne_show', { 'personne_id': club.personne.id }) }}">{{ club.personne.nom }} {{ club.personne.prenom }}</a></td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('club_show', { 'idClub': club.idClub }) }}">show</a>
+                            <a href="{{ path('club_show', { 'club_id': club.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('club_edit', { 'idClub': club.idClub }) }}">edit</a>
+                            <a href="{{ path('club_edit', { 'club_id': club.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

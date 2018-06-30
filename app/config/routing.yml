@@ -38,6 +38,10 @@ ffn_natation_personne:
     resource: "@FFNNatationBundle/Controller/administration/PersonneController.php"
     type:     annotation
 
+ffn_natation_admin:
+    resource: "@FFNNatationBundle/Controller/administration/AdminController.php"
+    type:     annotation
+
 ffn_natation:
     resource: "@FFNNatationBundle/Resources/config/routing.yml"
     prefix:   /

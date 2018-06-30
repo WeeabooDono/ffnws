@@ -48,7 +48,7 @@ class RoleController extends Controller
             $em->persist($role);
             $em->flush();
 
-            return $this->redirectToRoute('role_show', array('idRole' => $role->getIdrole()));
+            return $this->redirectToRoute('role_show', array('role_id' => $role->getId()));
         }
 
         return $this->render('role/new.html.twig', array(
@@ -60,15 +60,15 @@ class RoleController extends Controller
     /**
      * Finds and displays a role entity.
      *
-     * @Route("/{idRole}", name="role_show")
+     * @Route("/{role_id}", name="role_show")
      * @Method("GET")
      */
-    public function showAction(Role $role)
+    public function showAction(Role $role_id)
     {
-        $deleteForm = $this->createDeleteForm($role);
+        $deleteForm = $this->createDeleteForm($role_id);
 
         return $this->render('role/show.html.twig', array(
-            'role' => $role,
+            'role' => $role_id,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -76,23 +76,23 @@ class RoleController extends Controller
     /**
      * Displays a form to edit an existing role entity.
      *
-     * @Route("/{idRole}/edit", name="role_edit")
+     * @Route("/{role_id}/edit", name="role_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Role $role)
+    public function editAction(Request $request, Role $role_id)
     {
-        $deleteForm = $this->createDeleteForm($role);
-        $editForm = $this->createForm('FFN\NatationBundle\Form\RoleType', $role);
+        $deleteForm = $this->createDeleteForm($role_id);
+        $editForm = $this->createForm('FFN\NatationBundle\Form\RoleType', $role_id);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('role_edit', array('idRole' => $role->getIdrole()));
+            return $this->redirectToRoute('role_edit', array('role_id' => $role_id->getId()));
         }
 
         return $this->render('role/edit.html.twig', array(
-            'role' => $role,
+            'role' => $role_id,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -101,17 +101,17 @@ class RoleController extends Controller
     /**
      * Deletes a role entity.
      *
-     * @Route("/{idRole}", name="role_delete")
+     * @Route("/{role_id}", name="role_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Role $role)
+    public function deleteAction(Request $request, Role $role_id)
     {
-        $form = $this->createDeleteForm($role);
+        $form = $this->createDeleteForm($role_id);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($role);
+            $em->remove($role_id);
             $em->flush();
         }
 
@@ -128,7 +128,7 @@ class RoleController extends Controller
     private function createDeleteForm(Role $role)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('role_delete', array('idRole' => $role->getIdrole())))
+            ->setAction($this->generateUrl('role_delete', array('role_id' => $role->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

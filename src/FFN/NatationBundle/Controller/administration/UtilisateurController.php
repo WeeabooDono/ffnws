@@ -48,7 +48,7 @@ class UtilisateurController extends Controller
             $em->persist($utilisateur);
             $em->flush();
 
-            return $this->redirectToRoute('utilisateur_show', array('idPersonne' => $utilisateur->getIdpersonne()->getIdPersonne()));
+            return $this->redirectToRoute('utilisateur_show', array('personne_id' => $utilisateur->getId()->getId()));
         }
 
         return $this->render('utilisateur/new.html.twig', array(
@@ -60,15 +60,15 @@ class UtilisateurController extends Controller
     /**
      * Finds and displays a utilisateur entity.
      *
-     * @Route("/{idPersonne}", name="utilisateur_show")
+     * @Route("/{personne_id}", name="utilisateur_show")
      * @Method("GET")
      */
-    public function showAction(Utilisateur $utilisateur)
+    public function showAction(Utilisateur $personne_id)
     {
-        $deleteForm = $this->createDeleteForm($utilisateur);
+        $deleteForm = $this->createDeleteForm($personne_id);
 
         return $this->render('utilisateur/show.html.twig', array(
-            'utilisateur' => $utilisateur,
+            'utilisateur' => $personne_id,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -76,23 +76,23 @@ class UtilisateurController extends Controller
     /**
      * Displays a form to edit an existing utilisateur entity.
      *
-     * @Route("/{idPersonne}/edit", name="utilisateur_edit")
+     * @Route("/{personne_id}/edit", name="utilisateur_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Utilisateur $utilisateur)
+    public function editAction(Request $request, Utilisateur $personne_id)
     {
-        $deleteForm = $this->createDeleteForm($utilisateur);
-        $editForm = $this->createForm('FFN\NatationBundle\Form\UtilisateurType', $utilisateur);
+        $deleteForm = $this->createDeleteForm($personne_id);
+        $editForm = $this->createForm('FFN\NatationBundle\Form\UtilisateurType', $personne_id);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('utilisateur_edit', array('idPersonne' => $utilisateur->getIdpersonne()->getIdpersonne()));
+            return $this->redirectToRoute('utilisateur_edit', array('personne_id' => $personne_id->getId()->getId()));
         }
 
         return $this->render('utilisateur/edit.html.twig', array(
-            'utilisateur' => $utilisateur,
+            'utilisateur' => $personne_id,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -101,17 +101,17 @@ class UtilisateurController extends Controller
     /**
      * Deletes a utilisateur entity.
      *
-     * @Route("/{idPersonne}", name="utilisateur_delete")
+     * @Route("/{personne_id}", name="utilisateur_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Utilisateur $utilisateur)
+    public function deleteAction(Request $request, Utilisateur $personne_id)
     {
-        $form = $this->createDeleteForm($utilisateur);
+        $form = $this->createDeleteForm($personne_id);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($utilisateur);
+            $em->remove($personne_id);
             $em->flush();
         }
 
@@ -128,7 +128,7 @@ class UtilisateurController extends Controller
     private function createDeleteForm(Utilisateur $utilisateur)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('utilisateur_delete', array('idPersonne' => $utilisateur->getIdpersonne()->getIdPersonne())))
+            ->setAction($this->generateUrl('utilisateur_delete', array('personne_id' => $utilisateur->getId()->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

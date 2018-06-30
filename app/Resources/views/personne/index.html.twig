@@ -6,7 +6,7 @@
     <table>
         <thead>
             <tr>
-                <th>Idpersonne</th>
+                <th>Id</th>
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Adresse</th>
@@ -18,7 +18,7 @@
         <tbody>
         {% for personne in personnes %}
             <tr>
-                <td><a href="{{ path('personne_show', { 'idPersonne': personne.idPersonne }) }}">{{ personne.idPersonne }}</a></td>
+                <td><a href="{{ path('personne_show', { 'personne_id': personne.id }) }}">{{ personne.id }}</a></td>
                 <td>{{ personne.nom }}</td>
                 <td>{{ personne.prenom }}</td>
                 <td>{{ personne.adresse }}</td>
@@ -27,10 +27,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('personne_show', { 'idPersonne': personne.idPersonne }) }}">show</a>
+                            <a href="{{ path('personne_show', { 'personne_id': personne.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('personne_edit', { 'idPersonne': personne.idPersonne }) }}">edit</a>
+                            <a href="{{ path('personne_edit', { 'personne_id': personne.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

@@ -17,11 +17,10 @@ class ComposerType extends AbstractType
         //$lieu = $builder->getData()->getIdLieu()->getIdLieu();
         // 'choice_value' => 'idLieu'
         $builder->add('isActif')
-            ->add('idPersonne', EntityType::class, array(
-                'class' => 'FFNNatationBundle:Personne',
-                'choice_label' => 'nom'
+            ->add('personne', EntityType::class, array(
+                'class' => 'FFNNatationBundle:Personne'
             ))
-            ->add('idEquipe', EntityType::class, array(
+            ->add('equipe', EntityType::class, array(
                 'class' => 'FFNNatationBundle:Equipe',
                 'choice_label' => 'nom'
             ));

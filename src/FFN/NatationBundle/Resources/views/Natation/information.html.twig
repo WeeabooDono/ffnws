@@ -17,8 +17,8 @@
             <ul class="list-group col-lg-5">
                 {% for equipe in equipes %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="{{ path('ffn_natation_equipe', {'id': equipe.idEquipe}) }}">{{ equipe.nom }}</a>
-                        <span class="badge badge-primary badge-pill">{{ equipe.idPersonne|length }} Nageurs</span>
+                        <a href="{{ path('ffn_natation_equipe', {'id': equipe.id}) }}">{{ equipe.nom }}</a>
+                        <span class="badge badge-primary badge-pill">{{ equipe.id|length }} Nageurs</span>
                     </li>
                 {% endfor %}
             </ul>

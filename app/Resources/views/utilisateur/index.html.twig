@@ -6,7 +6,7 @@
     <table>
         <thead>
             <tr>
-                <th>IdPersonne</th>
+                <th>Id</th>
                 <th>Nom</th>
                 <th>Login</th>
                 <th>Pwd</th>
@@ -16,17 +16,17 @@
         <tbody>
         {% for utilisateur in utilisateurs %}
             <tr>
-                <td><a href="{{ path('utilisateur_show', { 'idPersonne': utilisateur.idPersonne.idPersonne }) }}">{{ utilisateur.idPersonne.idPersonne }}</a></td>
-                <td><a href="{{ path('personne_show', { 'idPersonne': utilisateur.idPersonne.idPersonne }) }}">{{ utilisateur.idPersonne.nom }} {{ utilisateur.idPersonne.prenom }}</a></td>
-                <td>{{ utilisateur.login }}</a></td>
+                <td><a href="{{ path('utilisateur_show', { 'personne_id': utilisateur.personne.id }) }}">{{ utilisateur.personne.id }}</a></td>
+                <td><a href="{{ path('personne_show', { 'personne_id': utilisateur.personne.id }) }}">{{ utilisateur.personne.nom }} {{ utilisateur.personne.prenom }}</a></td>
+                <td>{{ utilisateur.username }}</td>
                 <td>•••••••••••••••••••••••••••••••</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('utilisateur_show', { 'idPersonne': utilisateur.idPersonne.idPersonne }) }}">show</a>
+                            <a href="{{ path('utilisateur_show', { 'personne_id': utilisateur.personne.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('utilisateur_edit', { 'idPersonne': utilisateur.idPersonne.idPersonne }) }}">edit</a>
+                            <a href="{{ path('utilisateur_edit', { 'personne_id': utilisateur.personne.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

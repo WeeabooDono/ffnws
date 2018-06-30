@@ -6,7 +6,7 @@
     <table>
         <thead>
             <tr>
-                <th>Idlieu</th>
+                <th>ID</th>
                 <th>Nom</th>
                 <th>Adresse</th>
                 <th>Codepostal</th>
@@ -17,7 +17,7 @@
         <tbody>
         {% for lieu in lieus %}
             <tr>
-                <td><a href="{{ path('lieu_show', { 'idLieu': lieu.idLieu }) }}">{{ lieu.idLieu }}</a></td>
+                <td><a href="{{ path('lieu_show', { 'lieu_id': lieu.id }) }}">{{ lieu.id }}</a></td>
                 <td>{{ lieu.nom }}</td>
                 <td>{{ lieu.adresse }}</td>
                 <td>{{ lieu.codePostal }}</td>
@@ -25,10 +25,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('lieu_show', { 'idLieu': lieu.idLieu }) }}">show</a>
+                            <a href="{{ path('lieu_show', { 'lieu_id': lieu.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('lieu_edit', { 'idLieu': lieu.idLieu }) }}">edit</a>
+                            <a href="{{ path('lieu_edit', { 'lieu_id': lieu.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

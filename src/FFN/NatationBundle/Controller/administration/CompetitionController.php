@@ -48,7 +48,7 @@ class CompetitionController extends Controller
             $em->persist($competition);
             $em->flush();
 
-            return $this->redirectToRoute('competition_show', array('idCompetition' => $competition->getIdcompetition()));
+            return $this->redirectToRoute('competition_show', array('competition_id' => $competition->getId()));
         }
 
         return $this->render('competition/new.html.twig', array(
@@ -60,15 +60,15 @@ class CompetitionController extends Controller
     /**
      * Finds and displays a competition entity.
      *
-     * @Route("/{idCompetition}", name="competition_show")
+     * @Route("/{competition_id}", name="competition_show")
      * @Method("GET")
      */
-    public function showAction(Competition $competition)
+    public function showAction(Competition $competition_id)
     {
-        $deleteForm = $this->createDeleteForm($competition);
+        $deleteForm = $this->createDeleteForm($competition_id);
 
         return $this->render('competition/show.html.twig', array(
-            'competition' => $competition,
+            'competition' => $competition_id,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -76,43 +76,43 @@ class CompetitionController extends Controller
     /**
      * Displays a form to edit an existing competition entity.
      *
-     * @Route("/{idCompetition}/edit", name="competition_edit")
+     * @Route("/{competition_id}/edit", name="competition_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Competition $competition)
+    public function editAction(Request $request, Competition $competition_id)
     {
-        $deleteForm = $this->createDeleteForm($competition);
-        $editForm = $this->createForm('FFN\NatationBundle\Form\CompetitionType', $competition);
+        $deleteForm = $this->createDeleteForm($competition_id);
+        $editForm = $this->createForm('FFN\NatationBundle\Form\CompetitionType', $competition_id);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('competition_edit', array('idCompetition' => $competition->getIdcompetition()));
+            return $this->redirectToRoute('competition_edit', array('competition_id' => $competition_id->getId()));
         }
 
         return $this->render('competition/edit.html.twig', array(
-            'competition' => $competition,
+            'competition' => $competition_id,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'lieu' => $competition->getIdLieu()->getNom(),
+            'lieu' => $competition_id->getLieu()->getNom(),
         ));
     }
 
     /**
      * Deletes a competition entity.
      *
-     * @Route("/{idCompetition}", name="competition_delete")
+     * @Route("/{competition_id}", name="competition_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Competition $competition)
+    public function deleteAction(Request $request, Competition $competition_id)
     {
-        $form = $this->createDeleteForm($competition);
+        $form = $this->createDeleteForm($competition_id);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($competition);
+            $em->remove($competition_id);
             $em->flush();
         }
 
@@ -129,7 +129,7 @@ class CompetitionController extends Controller
     private function createDeleteForm(Competition $competition)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('competition_delete', array('idCompetition' => $competition->getIdcompetition())))
+            ->setAction($this->generateUrl('competition_delete', array('competition_id' => $competition->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

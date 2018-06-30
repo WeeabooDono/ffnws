@@ -6,7 +6,7 @@
     <table>
         <thead>
             <tr>
-                <th>Idpersonne</th>
+                <th>Id</th>
                 <th>Idcompetition</th>
                 <th>Idrole</th>
                 <th>Rang</th>
@@ -16,17 +16,17 @@
         <tbody>
         {% for utilisateurrole in utilisateurroles %}
             <tr>
-                <td><a href="{{ path('personne_show', { 'idPersonne': utilisateurrole.idPersonne.idPersonne }) }}">{{ utilisateurrole.idPersonne.nom }}</a></td>
-                <td><a href="{{ path('competition_show', { 'idCompetition': utilisateurrole.idCompetition.idCompetition }) }}">{{ utilisateurrole.idCompetition.nom }}</a></td>
-                <td><a href="{{ path('role_show', { 'idRole': utilisateurrole.idRole.idRole }) }}">{{ utilisateurrole.idRole.nom }}</a></td>
+                <td><a href="{{ path('personne_show', { 'personne_id': utilisateurrole.personne.id }) }}">{{ utilisateurrole.personne.nom }}</a></td>
+                <td><a href="{{ path('competition_show', { 'competition_id': utilisateurrole.competition.id }) }}">{{ utilisateurrole.competition.nom }}</a></td>
+                <td><a href="{{ path('role_show', { 'role_id': utilisateurrole.role.id }) }}">{{ utilisateurrole.role.id }}</a></td>
                 <td>{{ utilisateurrole.rang }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('utilisateurrole_show', { 'idRole': utilisateurrole.idRole.idRole, 'idPersonne': utilisateurrole.idPersonne.idPersonne, 'idCompetition': utilisateurrole.idCompetition.idCompetition }) }}">show</a>
+                            <a href="{{ path('utilisateurrole_show', { 'role_id': utilisateurrole.role.id, 'personne_id': utilisateurrole.personne.id, 'competition_id': utilisateurrole.competition.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('utilisateurrole_edit', { 'idRole': utilisateurrole.idRole.idRole, 'idPersonne': utilisateurrole.idPersonne.idPersonne, 'idCompetition': utilisateurrole.idCompetition.idCompetition }) }}">edit</a>
+                            <a href="{{ path('utilisateurrole_edit', { 'role_id': utilisateurrole.role.id, 'personne_id': utilisateurrole.personne.id, 'competition_id': utilisateurrole.competition.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

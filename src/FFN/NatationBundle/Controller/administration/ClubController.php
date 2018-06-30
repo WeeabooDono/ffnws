@@ -48,7 +48,7 @@ class ClubController extends Controller
             $em->persist($club);
             $em->flush();
 
-            return $this->redirectToRoute('club_show', array('idClub' => $club->getIdclub()));
+            return $this->redirectToRoute('club_show', array('club_id' => $club->getId()));
         }
 
         return $this->render('club/new.html.twig', array(
@@ -60,15 +60,15 @@ class ClubController extends Controller
     /**
      * Finds and displays a club entity.
      *
-     * @Route("/{idClub}", name="club_show")
+     * @Route("/{club_id}", name="club_show")
      * @Method("GET")
      */
-    public function showAction(Club $club)
+    public function showAction(Club $club_id)
     {
-        $deleteForm = $this->createDeleteForm($club);
+        $deleteForm = $this->createDeleteForm($club_id);
 
         return $this->render('club/show.html.twig', array(
-            'club' => $club,
+            'club' => $club_id,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -76,23 +76,23 @@ class ClubController extends Controller
     /**
      * Displays a form to edit an existing club entity.
      *
-     * @Route("/{idClub}/edit", name="club_edit")
+     * @Route("/{club_id}/edit", name="club_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Club $club)
+    public function editAction(Request $request, Club $club_id)
     {
-        $deleteForm = $this->createDeleteForm($club);
-        $editForm = $this->createForm('FFN\NatationBundle\Form\ClubType', $club);
+        $deleteForm = $this->createDeleteForm($club_id);
+        $editForm = $this->createForm('FFN\NatationBundle\Form\ClubType', $club_id);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('club_edit', array('idClub' => $club->getIdclub()));
+            return $this->redirectToRoute('club_edit', array('club_id' => $club_id->getId()));
         }
 
         return $this->render('club/edit.html.twig', array(
-            'club' => $club,
+            'club' => $club_id,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -101,17 +101,17 @@ class ClubController extends Controller
     /**
      * Deletes a club entity.
      *
-     * @Route("/{idClub}", name="club_delete")
+     * @Route("/{club_id}", name="club_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Club $club)
+    public function deleteAction(Request $request, Club $club_id)
     {
-        $form = $this->createDeleteForm($club);
+        $form = $this->createDeleteForm($club_id);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($club);
+            $em->remove($club_id);
             $em->flush();
         }
 
@@ -128,7 +128,7 @@ class ClubController extends Controller
     private function createDeleteForm(Club $club)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('club_delete', array('idClub' => $club->getIdclub())))
+            ->setAction($this->generateUrl('club_delete', array('club_id' => $club->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

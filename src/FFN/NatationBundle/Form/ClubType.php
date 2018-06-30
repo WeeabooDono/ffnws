@@ -15,12 +15,11 @@ class ClubType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nom')
-            ->add('idLieu', EntityType::class, array(
+            ->add('lieu', EntityType::class, array(
                 'class' => 'FFNNatationBundle:Lieu',
                 'choice_label' => 'nom'))
-            ->add('idPersonne', EntityType::class, array(
-                'class' => 'FFNNatationBundle:Personne',
-                'choice_label' => 'nom'));
+            ->add('personne', EntityType::class, array(
+                'class' => 'FFNNatationBundle:Personne'));
     }/**
      * {@inheritdoc}
      */
