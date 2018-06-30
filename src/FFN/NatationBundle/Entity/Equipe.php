@@ -56,7 +56,7 @@ class Equipe
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Personne", mappedBy="idEquipe")
+     * @ORM\ManyToMany(targetEntity="Personne", mappedBy="equipe")
      */
     private $personne;
 

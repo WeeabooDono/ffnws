@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Composer
  *
- * @ORM\Table(name="composer", indexes={@ORM\Index(name="IDX_761C981A27E0CE8", columns={"id_equipe"}), @ORM\Index(name="IDX_761C961A5F15257A", columns={"id_personne"})})
+ * @ORM\Table(name="equipe_personne", indexes={@ORM\Index(name="IDX_761C981A27E0CE8", columns={"id_equipe"}), @ORM\Index(name="IDX_761C961A5F15257A", columns={"id_personne"})})
  * @ORM\Entity
  */
 class Composer

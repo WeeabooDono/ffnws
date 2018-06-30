@@ -60,8 +60,8 @@ class Personne
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Equipe", inversedBy="idPersonne")
-     * @ORM\JoinTable(name="composer",
+     * @ORM\ManyToMany(targetEntity="Equipe", inversedBy="personne")
+     * @ORM\JoinTable(name="equipe_personne",
      *   joinColumns={
      *     @ORM\JoinColumn(name="id_personne", referencedColumnName="id_personne")
      *   },
