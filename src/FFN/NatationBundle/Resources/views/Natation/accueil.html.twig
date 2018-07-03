@@ -16,17 +16,33 @@
 
         <div class="row">
             {# Menu #}
-            <div class="col-lg-3">
-                    <h1 class="my-4">Catégories</h1>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">Category 1</a>
-                        <a href="#" class="list-group-item">Category 2</a>
-                        <a href="#" class="list-group-item">Category 3</a>
-                        {# Suite des liens à ajouter avec l'héritage #}
-                    </div>
-            </div>
+            {% if is_granted('ROLE_USER') %}
+                <div class="col-lg-3">
+                    {% block menu %}
+                        <h1 class="my-4">Menu</h1>
+                        <div class="list-group">
+
+                            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                <a href="{{ path('admin_index') }}" class="list-group-item">Administration</a>
+                            {% endif %}
+                            {% if is_granted('ROLE_JUGE') %}
+                                <a href="{{ path('juge_index') }}" class="list-group-item">Juger</a>
+                            {% endif %}
+                            {% if is_granted('ROLE_CREATEUR_COMPETITION') %}
+                                <a href="{{ path('creator_index') }}" class="list-group-item">Gestion des compétitions</a>
+                            {% endif %}
+                            {# Suite des liens à ajouter avec l'héritage #}
+                        </div><!-- #list-group -->
+                    {% endblock %}
+
+                </div>
+            {% endif %}
             {# Carroussel #}
+            {% if is_granted('ROLE_USER') %}
             <div class="col-lg-9">
+            {% else %}
+            <div class="col-lg-12">
+            {% endif %}
                 <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
                     <ol class="carousel-indicators">
                         {% for competition in competitions %}

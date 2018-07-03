@@ -4,7 +4,9 @@ security:
 
     access_control:
         - { path: ^/login$, allow_if: "not has_role('ROLE_USER')" }
-        - { path: ^/admin$, roles: ROLE_SUPER_ADMIN }
+        - { path: ^/admin/competition, roles: ROLE_CREATEUR_COMPETITION }
+        - { path: ^/admin, roles: ROLE_SUPER_ADMIN }
+
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
@@ -41,5 +43,6 @@ security:
     role_hierarchy:
         ROLE_LECTEUR: ROLE_USER
         ROLE_JUGE: [ROLE_LECTEUR, ROLE_USER]
-        ROLE_ADMIN: [ROLE_JUGE, ROLE_LECTEUR, ROLE_USER]
-        ROLE_SUPER_ADMIN: [ROLE_JUGE, ROLE_LECTEUR, ROLE_USER, ROLE_ADMIN]
+        ROLE_CREATEUR_COMPETITION: [ROLE_LECTEUR, ROLE_USER]
+        ROLE_ADMIN: [ROLE_CREATEUR_COMPETITION, ROLE_JUGE, ROLE_LECTEUR, ROLE_USER]
+        ROLE_SUPER_ADMIN: [ROLE_CREATEUR_COMPETITION, ROLE_JUGE, ROLE_LECTEUR, ROLE_USER, ROLE_ADMIN]

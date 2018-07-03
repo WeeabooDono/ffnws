@@ -11,11 +11,21 @@
             </tr>
             <tr>
                 <th>Login</th>
-                <td>{# {{ utilisateur.login }} #}</td>
+                <td>{{ utilisateur.username }}</td>
             </tr>
             <tr>
                 <th>Pwd</th>
                 <td>•••••••••••••••••••••••••••••••</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>
+                    <ul>
+                        {% for role in utilisateur.roles %}
+                            <li>{{ role }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
             </tr>
         </tbody>
     </table>

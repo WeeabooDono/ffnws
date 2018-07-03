@@ -47,12 +47,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('services') }}">Services</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('profiles') }}">Profiles des juges</a>
-                    </li>
                     {% if is_granted('ROLE_SUPER_ADMIN') %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('admin_index') }}">Administration</a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('ROLE_JUGE') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('juge_index') }}">Profiles des juges</a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('ROLE_CREATEUR_COMPETITION') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('creator_index') }}">Gestion des compétitions</a>
                         </li>
                     {% endif %}
                 </ul>
@@ -66,19 +73,27 @@
     <div class="container">
 
         <div class="row">
-
+            {% if is_granted('ROLE_USER') %}
             <div class="col-lg-3">
                 {% block menu %}
-                    <h1 class="my-4">Catégories</h1>
+                    <h1 class="my-4">Menu</h1>
                     <div class="list-group">
-                        <a href="#" class="list-group-item">Category 1</a>
-                        <a href="#" class="list-group-item">Category 2</a>
-                        <a href="#" class="list-group-item">Category 3</a>
+
+                        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                            <a href="{{ path('admin_index') }}" class="list-group-item">Administration</a>
+                        {% endif %}
+                        {% if is_granted('ROLE_JUGE') %}
+                            <a href="{{ path('juge_index') }}" class="list-group-item">Juger</a>
+                        {% endif %}
+                        {% if is_granted('ROLE_CREATEUR_COMPETITION') %}
+                            <a href="{{ path('creator_index') }}" class="list-group-item">Gestion des compétitions</a>
+                        {% endif %}
                         {# Suite des liens à ajouter avec l'héritage #}
                     </div><!-- #list-group -->
                 {% endblock %}
 
             </div>
+            {% endif %}
             <!-- /.col-lg-3 -->
 
             <div class="col-lg-9">

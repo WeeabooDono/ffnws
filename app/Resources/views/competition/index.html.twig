@@ -19,7 +19,11 @@
             <tr>
                 <td><a href="{{ path('competition_show', { 'competition_id': competition.id }) }}">{{ competition.id }}</a></td>
                 <td>{{ competition.nom }}</td>
-                <td><a href="{{ path('lieu_show', { 'lieu_id': competition.lieu.id }) }}">{{ competition.lieu.nom }}</a></td>
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                    <td><a href="{{ path('lieu_show', { 'lieu_id': competition.lieu.id }) }}">{{ competition.lieu.nom }}</a></td>
+                {% else %}
+                    <td>{{ competition.lieu.nom }}</td>
+                {% endif %}
                 <td>{% if competition.dateDebut %}{{ competition.dateDebut|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if competition.dateFin %}{{ competition.dateFin|date('Y-m-d') }}{% endif %}</td>
                 <td>

@@ -42,6 +42,15 @@ ffn_natation_admin:
     resource: "@FFNNatationBundle/Controller/administration/AdminController.php"
     type:     annotation
 
+ffn_natation_creator:
+    resource: "@FFNNatationBundle/Controller/creator/CreatorController.php"
+    type:     annotation
+
+ffn_natation_juge:
+    resource: "@FFNNatationBundle/Controller/juge/JugeController.php"
+    type:     annotation
+
+
 ffn_natation:
     resource: "@FFNNatationBundle/Resources/config/routing.yml"
     prefix:   /

@@ -43,7 +43,12 @@ class UtilisateurType extends AbstractType
             ))
             ->add(
                 'roles', ChoiceType::class, array(
-                    'choices' => ['ROLE_LECTEUR' => 'ROLE_USER', 'ROLE_ADMIN' => 'ROLE_ADMIN', 'ROLE_SUPER_ADMIN' => 'ROLE_SUPER_ADMIN'],
+                    'choices' => [
+                        'ROLE_LECTEUR' => 'ROLE_USER',
+                        'ROLE_JUGE' => 'ROLE_JUGE',
+                        'ROLE_CREATEUR_COMPETITION' => 'ROLE_CREATEUR_COMPETITION',
+                        'ROLE_ADMIN' => 'ROLE_ADMIN',
+                        'ROLE_SUPER_ADMIN' => 'ROLE_SUPER_ADMIN'],
                     'expanded' => true,
                     'multiple' => true,
                 )

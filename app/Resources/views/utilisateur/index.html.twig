@@ -7,9 +7,10 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nom</th>
+                <th>Utilisateur</th>
                 <th>Login</th>
-                <th>Pwd</th>
+                <th>Mot de passe</th>
+                <th>Roles</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -20,6 +21,13 @@
                 <td><a href="{{ path('personne_show', { 'personne_id': utilisateur.personne.id }) }}">{{ utilisateur.personne.nom }} {{ utilisateur.personne.prenom }}</a></td>
                 <td>{{ utilisateur.username }}</td>
                 <td>•••••••••••••••••••••••••••••••</td>
+                <td>
+                    <ul>
+                        {% for role in utilisateur.roles %}
+                            <li>{{ role }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
                 <td>
                     <ul>
                         <li>

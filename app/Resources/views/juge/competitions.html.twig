@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="card h-100 col-lg-12 col-md-6 mb-4 mt-4 mr-auto center">
+                <h1>Juger</h1>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-6">
+                Compétitions en cours
+                <div class="list-group">
+                    {% for competition in competitions %}
+                        {% if date(competition.dateDebut) < date() and date(competition.dateFin) > date() %}
+                        <a href="{{ path('competition_equipe_list', { 'competition_id': competition.id }) }}" class="list-group-item">{{ competition.nom }}
+                            <span class="badge badge-primary badge-pill">
+                                    {% if competition.dateDebut %}{{ competition.dateDebut|date('Y-m-d') }}{% endif %} au
+                                    {% if competition.dateFin %}{{ competition.dateFin|date('Y-m-d') }}{% endif %}
+                                </span></a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                Compétitions passées ou à venir
+                <div class="list-group">
+                    {% for competition in competitions %}
+                        {% if (date(competition.dateDebut) < date() and date(competition.dateFin) > date()) == false %}
+                            <a href="{{ path('competition_equipe_list', { 'competition_id': competition.id }) }}" class="list-group-item">{{ competition.nom }}
+                                <span class="badge badge-primary badge-pill">
+                                    {% if competition.dateDebut %}{{ competition.dateDebut|date('Y-m-d') }}{% endif %} au
+                                    {% if competition.dateFin %}{{ competition.dateFin|date('Y-m-d') }}{% endif %}
+                                </span></a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('ffn_natation_homepage') }}">Retour à l'accueil</a>
+        </li>
+    </ul>
+{% endblock %}

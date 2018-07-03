@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="card h-100 col-lg-5 col-md-6 mb-4 mt-4 mr-auto center">
+                <h1>{{ competition.nom }}</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <ul class="list-group col-lg-5">
+                {% for equipe in equipes %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a href="{{ path('ffn_natation_equipe', {'id': equipe.id}) }}">{{ equipe.nom }}</a>
+                        <form action="{{ path('competition_equipe_list', { 'competition_id': competition.id }) }}"
+                              method="post">
+                            <input type="hidden" name="competition" value="{{ competition.id }}">
+                            <input type="hidden" name="equipe" value="{{ equipe.id }}">
+                            <input type="hidden" name="personne" value="{{ app.user.id.id }}">
+                            <div class="form-group">
+                                <input type="number" name="note" min="0" max="100" value="50">
+                            </div>
+                            <input type="submit" value="Ajouter">
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
